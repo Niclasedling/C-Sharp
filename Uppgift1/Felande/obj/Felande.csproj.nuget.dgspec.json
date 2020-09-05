@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nkepe\\OneDrive\\Dokument\\GitHub\\C-Sharp1\\Uppgift1\\Felande\\Felande.csproj": {}
+    "C:\\Users\\nkepe\\OneDrive\\Dokument\\GitHub\\C-Sharp\\Uppgift1\\Felande\\Felande.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nkepe\\OneDrive\\Dokument\\GitHub\\C-Sharp1\\Uppgift1\\Felande\\Felande.csproj": {
+    "C:\\Users\\nkepe\\OneDrive\\Dokument\\GitHub\\C-Sharp\\Uppgift1\\Felande\\Felande.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nkepe\\OneDrive\\Dokument\\GitHub\\C-Sharp1\\Uppgift1\\Felande\\Felande.csproj",
+        "projectUniqueName": "C:\\Users\\nkepe\\OneDrive\\Dokument\\GitHub\\C-Sharp\\Uppgift1\\Felande\\Felande.csproj",
         "projectName": "Felande",
-        "projectPath": "C:\\Users\\nkepe\\OneDrive\\Dokument\\GitHub\\C-Sharp1\\Uppgift1\\Felande\\Felande.csproj",
+        "projectPath": "C:\\Users\\nkepe\\OneDrive\\Dokument\\GitHub\\C-Sharp\\Uppgift1\\Felande\\Felande.csproj",
         "packagesPath": "C:\\Users\\nkepe\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nkepe\\OneDrive\\Dokument\\GitHub\\C-Sharp1\\Uppgift1\\Felande\\obj\\",
+        "outputPath": "C:\\Users\\nkepe\\OneDrive\\Dokument\\GitHub\\C-Sharp\\Uppgift1\\Felande\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\nkepe\\AppData\\Roaming\\NuGet\\NuGet.Config",

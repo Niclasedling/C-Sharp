@@ -24,15 +24,21 @@ namespace Uppgift1b
 
             //1. tilldela variabel i värdet 10
             //Kod här
-            
+             i = 10;
+
             //2. Använd implicit konvertering för att tilldela variabel "l" värdet av "i"
             //Kod här
-            
+             i = 10;
+             l = i;
+
+
             //3. Addera 1 till variabeln "l" mha inkrement operatorn.
             //Kod här
-            
+            l++;
+
             //4. Använd compound assignment för att multiplicera värdet av variabel "l" med 2
             //Kod här
+            
             
             //5. Avänd explicit konvertering för att tilldela variabel "i" värdet av "l"
             //Kod här

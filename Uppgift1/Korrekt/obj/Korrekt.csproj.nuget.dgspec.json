@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nkepe\\OneDrive\\Dokument\\GitHub\\C-Sharp1\\Uppgift1\\Korrekt\\Korrekt.csproj": {}
+    "C:\\Users\\nkepe\\OneDrive\\Dokument\\GitHub\\C-Sharp\\Uppgift1\\Korrekt\\Korrekt.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nkepe\\OneDrive\\Dokument\\GitHub\\C-Sharp1\\Uppgift1\\Korrekt\\Korrekt.csproj": {
+    "C:\\Users\\nkepe\\OneDrive\\Dokument\\GitHub\\C-Sharp\\Uppgift1\\Korrekt\\Korrekt.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nkepe\\OneDrive\\Dokument\\GitHub\\C-Sharp1\\Uppgift1\\Korrekt\\Korrekt.csproj",
+        "projectUniqueName": "C:\\Users\\nkepe\\OneDrive\\Dokument\\GitHub\\C-Sharp\\Uppgift1\\Korrekt\\Korrekt.csproj",
         "projectName": "Korrekt",
-        "projectPath": "C:\\Users\\nkepe\\OneDrive\\Dokument\\GitHub\\C-Sharp1\\Uppgift1\\Korrekt\\Korrekt.csproj",
+        "projectPath": "C:\\Users\\nkepe\\OneDrive\\Dokument\\GitHub\\C-Sharp\\Uppgift1\\Korrekt\\Korrekt.csproj",
         "packagesPath": "C:\\Users\\nkepe\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nkepe\\OneDrive\\Dokument\\GitHub\\C-Sharp1\\Uppgift1\\Korrekt\\obj\\",
+        "outputPath": "C:\\Users\\nkepe\\OneDrive\\Dokument\\GitHub\\C-Sharp\\Uppgift1\\Korrekt\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\nkepe\\AppData\\Roaming\\NuGet\\NuGet.Config",
