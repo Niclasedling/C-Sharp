@@ -27,22 +27,25 @@ namespace Uppgift1b
             i = 10;
             //2. Använd implicit konvertering för att tilldela variabel "l" värdet av "i"
             //Kod här
-            i = (int)l;
+            l = i;
 
             //3. Addera 1 till variabeln "l" mha inkrement operatorn.
             //Kod här
-            l = 100;
             l++;
+
             //4. Använd compound assignment för att multiplicera värdet av variabel "l" med 2
             //Kod här
             l *= 2;
+
             //5. Avänd explicit konvertering för att tilldela variabel "i" värdet av "l"
             //Kod här
-            i = (int)l;
+            i = Convert.ToInt32(l);
+            //Alternativ: i = (int)l;
+            
 
             //6. Skriv ut värdet av variabeln i konsolen. Talet 22 bör skrivas ut
             //Kod här
-
+            Console.WriteLine(i);
 
             //7. Tilldela variabeln "f" värdet 3.14
             //Kod här
@@ -50,7 +53,9 @@ namespace Uppgift1b
 
             //8. Använd explicit konvertering för att tilldela variabeln "d" värdet av variabeln "f"
             //Kod här
-            f = (float)Convert.ToDecimal(d);
+            d = Convert.ToDecimal(f);
+
+            //Alternativt: d = (decimal)f;
 
             //9. Använd dekrement operatorn för att subtrahera värdet av "d" med 1
             //Kod här
@@ -62,73 +67,79 @@ namespace Uppgift1b
 
             //11. Använd explicit konvertering för att tilldela "i" värdet av "d" modulo 5 (restvärdet)
             //Kod här
-            i = (int)d;
-            d %= 5;
-            Console.WriteLine(d);
+            i = Convert.ToInt32(d) % 5;
+
+            //Alternativt: i = (int)d;
+                        // i %= 5;
+            
 
             //12. Skriv ut värdet av "i" i konsolen. Bör vara 1.
             //Kod här
-            
+            Console.WriteLine(i);
 
 
             //13. Tilldela variabeln "sant" värdet true som en sträng
             //Kod här
-            
+            sant = "true";
 
             //14. Använd en hjälp klass för att konvertera 
             //och tilldela variabeln "b" värdet av variabeln "sant"
             //Kod här
-            
+            b = bool.Parse(sant);
 
             //15. Sätt variabel "b":s värde till falskt
             //Kod här
-            
+            b = false;
 
             //16. Använd en hjälp klass för att konvertera 
             //och tilldela variabeln "sant" värdet av variabeln "b"
             //Kod här
-            
+            sant = Convert.ToString(b);
 
             //17. Skriv ut värdet av variabeln "sant" i konsolen. Bör vara False.
             //Kod här
-            
+            Console.WriteLine(sant);
+
 
             //18. Skriv ut till konsolen texten: Ange ett heltal:
             //Kod här
-            
+            Console.WriteLine("Ange ett heltal:");
 
             //19. Läs in ett heltal från konsolen tilldela värdet till variabel "input1"
             //Kod här
-            
+            input1 = Console.ReadLine();
 
             //20. Skriv ut till konsolen texten: Ange ett annat heltal:
             //Kod här
-            
+            Console.WriteLine("Ange ett annat heltal:");
+
 
             //21. Läs in ett annat heltal från konsolen tilldela värdet till variabel "input2"
             //Kod här
-            
+            input2 = Console.ReadLine();
+
 
             //22. Använd datatypen ints Parse funktion för att konvertera och tilldela
             //värdet av "input1" till variabeln "tal1"
             //Kod här
-
-            
+            tal1 = int.Parse(input1);
 
             //23. Använd datatypen ints Parse funktion för att konvertera och tilldela 
             //värdet av "input2" till variabeln "tal2"
             //Kod här
+            tal2 = int.Parse(input2);
 
-            
 
             //24. På en kod-rad skriv ut i konsolen mha string interpolation resultatet man 
             //får av att multiplicera "tal1" och "tal2" med varandra.
             //Exempel: Givet att "tal1" = 2 och "tal2" = 10 ska det skrivas ut i konsolen:
             //Produkten av talen 2 och 10 är: 20
             //Kod här
+           
+            Console.WriteLine($"Produkten av  {tal1 } och {tal2 } är {tal1 * tal2}");
 
-            
-            
-        }
+
+            Console.ReadLine();
+        } 
     }
 }
