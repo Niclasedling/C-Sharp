@@ -24,44 +24,47 @@ namespace Uppgift1b
 
             //1. tilldela variabel i värdet 10
             //Kod här
-            
+            i = 10;
             //2. Använd implicit konvertering för att tilldela variabel "l" värdet av "i"
             //Kod här
-            
+            i = (int)l;
+
             //3. Addera 1 till variabeln "l" mha inkrement operatorn.
             //Kod här
-            
+            l = 100;
+            l++;
             //4. Använd compound assignment för att multiplicera värdet av variabel "l" med 2
             //Kod här
-            
+            l *= 2;
             //5. Avänd explicit konvertering för att tilldela variabel "i" värdet av "l"
             //Kod här
-            
+            i = (int)l;
 
             //6. Skriv ut värdet av variabeln i konsolen. Talet 22 bör skrivas ut
             //Kod här
-            
+
 
             //7. Tilldela variabeln "f" värdet 3.14
             //Kod här
-            
+            f = 3.14F;
 
             //8. Använd explicit konvertering för att tilldela variabeln "d" värdet av variabeln "f"
             //Kod här
-            
+            f = (float)Convert.ToDecimal(d);
 
             //9. Använd dekrement operatorn för att subtrahera värdet av "d" med 1
             //Kod här
-            
+            d--;
 
             //10. Använd compound assignment för att multiplicera värdet av variabel "d" med 3
             //Kod här
-            
+            d *= 3;
 
             //11. Använd explicit konvertering för att tilldela "i" värdet av "d" modulo 5 (restvärdet)
             //Kod här
-            
-
+            i = (int)d;
+            d %= 5;
+            Console.WriteLine(d);
 
             //12. Skriv ut värdet av "i" i konsolen. Bör vara 1.
             //Kod här
