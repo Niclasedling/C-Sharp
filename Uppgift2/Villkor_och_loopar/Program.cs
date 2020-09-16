@@ -43,6 +43,7 @@ namespace Uppgift_2b
 
                     else if (startNumber < 1)
                     {
+
                         program = false;
                         check = false;
                     }
@@ -140,6 +141,7 @@ namespace Uppgift_2b
 
                 } while (check);
 
+                // Lägger till en deltagare för varje gång programmet körs, tills startNumber är mindre eller = 0
                 Competitors++;
 
 
@@ -190,12 +192,12 @@ namespace Uppgift_2b
                     bestTime = endTime;
                     firstPlaceHour = finnishHour;
                     firstPlaceMin = finnishMin;
-                    firstPlaceSec = finnishMin;
+                    firstPlaceSec = finnishSec;
 
                     firstPlaceStartnumber = startNumber;
 
                 }
-
+                // Om endTime är bättre än bestTime och endTime är sämre än secondPlaceTime eller minder = 0
                 else if ((endTime > bestTime && endTime < secondPlaceTime) || secondPlaceTime <= 0)
                 {
                     secondPlaceTime = endTime;
@@ -206,45 +208,48 @@ namespace Uppgift_2b
 
                 }
 
-                Console.Clear();
-                //Skriver ut detta resultat om det är fler än 1 tävlande
-                if (Competitors > 1)
-                {
-                    Console.WriteLine($"Första platsen är startnummer" +
-                        $" {firstPlaceStartnumber} med tiden: " +
-                        $"\n--- {firstPlaceHour} Timmar " +
-                        $"{firstPlaceMin} Minuter " +
-                        $"{firstPlaceSec} Sekunder---");
-
-                    //Skriver ut andra platsens resultat
-                    Console.WriteLine($"Andra platsen är startnummer " +
-                        $"{secondPlaceStartnumber} med tiden " +
-                        $"\n--- {secondPlaceHour} Timmar " +
-                        $"{secondPlaceMin} Minuter " +
-                        $"{secondPlaceSec} Sekunder---");
-                }
-                else if (Competitors < 1)
-                {
-                    Console.WriteLine("Loppet hade inga deltagare");
-                }
-
-                // SKriver ut vinnarens startnummer och resultat
-                else
-                {
-                    Console.WriteLine($"Första platsen är startnummer " +
-                        $"{firstPlaceStartnumber} med tiden: " +
-                        $"\n--- {finnishHour} Timmar, " +
-                        $"{finnishMin} Minuter, " +
-                        $"{finnishSec} Sekunder---");
-                }
-
-
-
-                Console.WriteLine($"Antal deltagare: {Competitors}");
-
-
-
             }
+
+            Console.Clear();
+            //Skriver ut detta resultat om det är fler än 1 tävlande
+            if (Competitors > 1)
+            {   // Skriver ut första platsens resultat
+                Console.WriteLine($"Första platsen är startnummer" +
+                    $" {firstPlaceStartnumber} med tiden: " +
+                    $"\n--- {firstPlaceHour} Timmar " +
+                    $"{firstPlaceMin} Minuter " +
+                    $"{firstPlaceSec} Sekunder---");
+
+                //Skriver ut andra platsens resultat
+                Console.WriteLine($"Andra platsen är startnummer " +
+                    $"{secondPlaceStartnumber} med tiden " +
+                    $"\n--- {secondPlaceHour} Timmar " +
+                    $"{secondPlaceMin} Minuter " +
+                    $"{secondPlaceSec} Sekunder---");
+                // Skriver ut antal deltagare
+                Console.WriteLine($"Antal deltagare: {Competitors}");
+            }
+
+            // SKriver ut vinnarens startnummer och resultat
+            else if (Competitors < 1)
+            {
+                // Om loppet har färre delagare än 1 kommer detta skivas ut
+                Console.WriteLine("Loppet hade inga deltagare");
+            }
+            else
+            {
+
+                Console.WriteLine($"Första platsen är startnummer " +
+                    $"{firstPlaceStartnumber} med tiden: " +
+                    $"\n--- {firstPlaceHour} Timmar, " +
+                    $"{firstPlaceMin} Minuter, " +
+                    $"{firstPlaceSec } Sekunder---");
+                // Skriver ut antal deltagare
+                Console.WriteLine($"Antal deltagare: {Competitors}");
+            }
+
+
+
 
 
 
