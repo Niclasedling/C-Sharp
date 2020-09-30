@@ -159,7 +159,7 @@ namespace Uppgift_3
 
                     // En Console ReadLine som kontrollerar att vi skriver in en siffra och att den siffran tillhör "programinput
                     int.TryParse(Console.ReadLine(), out int programinput);
-
+                    Console.Clear();
                     switch (programinput)
                     {   // Trycker man "1" kommer whileloopen "PrintMenu" att avbrytas och vi går ut till vår "program" loop
                         case 1:
@@ -170,7 +170,7 @@ namespace Uppgift_3
                         case 2:
                             foreach (var UserPerson in UserPersonList)
                             {
-                                Console.Write(UserPerson.UserName);
+                                Console.Write($"{UserPerson.UserName}:");
 
 
                                 foreach (var car in UserPerson.ListofCars)
@@ -179,7 +179,8 @@ namespace Uppgift_3
                                 }
 
                             }
-                            BackToMenu();
+                            
+                            BackToMenu2();
                             break;
                         //Trycker man "3" kommer programmet avslutas
                         case 3:
@@ -199,6 +200,11 @@ namespace Uppgift_3
         public static void BackToMenu()
         {
             Console.WriteLine("Tryck enter för att fortsätta");
+            Console.ReadLine();
+        }
+        public static void BackToMenu2()
+        {
+            Console.WriteLine("Tryck enter för att gå tillbaka till menyn");
             Console.ReadLine();
         }
         /// <summary>
