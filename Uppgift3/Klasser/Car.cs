@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Klasser
+namespace Uppgift_3
 {
     public class Car
     {
@@ -16,7 +14,9 @@ namespace Klasser
         public DateTime Registred { get; set; }
         public bool ElectricCar { get; set; }
 
-
+        /// <summary>
+        /// Skriver ut info om bilen
+        /// </summary>
         public void GetCarInfo()
         {
             Console.WriteLine($"\n Model: {_model}" +
@@ -28,7 +28,9 @@ namespace Klasser
                 Console.WriteLine(" Detta är en elbil");
             }
         }
-
+        /// <summary>
+        /// Skriver ut info om bilen och ägaren
+        /// </summary>
         public void GetUserCarInfo()
         {
             // skriver ut ägarens namn också
@@ -43,11 +45,19 @@ namespace Klasser
                 Console.WriteLine(" Detta är en elbil");
             }
         }
-
+        /// <summary>
+        /// Räknar om milen bilen åkt och lägger till på de tidigare milen åkt
+        /// </summary>
+        /// <param name="antalMilbilenkört"></param>
+        /// <returns>Milen bilen kört totalt</returns>
         public string GetcarMeter(decimal antalMilbilenkört)
         {
             return _carMeter.ToString();
         }
+        /// <summary>
+        /// En metod för att sätta milen bilen kört
+        /// </summary>
+        /// <param name="antalMilbilenkört"></param>
         public void SetcarMeter(decimal antalMilbilenkört)
         {
 
@@ -67,6 +77,12 @@ namespace Klasser
 
         }
 
+
+
+
     }
+
+
 }
+
 

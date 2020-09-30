@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace Klasser
+namespace Uppgift_3
 {
     public class Person
     {
@@ -21,3 +20,5 @@ namespace Klasser
         }
     }
 }
+
+

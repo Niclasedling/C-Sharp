@@ -7,7 +7,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Xml.Schema;
 
-namespace Klasser
+namespace Uppgift_3
 {
     class Program
     {
@@ -67,9 +67,6 @@ namespace Klasser
                 }
 
             }
-
-
-            //List<Car> UserCarList = new List<Car>();
             List<Person> UserPersonList = new List<Person>();
 
             var program = true;
@@ -79,12 +76,11 @@ namespace Klasser
                 do
                 {
                     Console.Clear();
-
+                    // Skapar en ny person "UserPerson"
                     Person UserPerson = new Person();
 
                     // Frågar efter namn på ägaren
-                    Console.WriteLine("Vad heter du?");
-                    UserPerson.UserName = Console.ReadLine();
+                    UserPerson.UserName = SetName("Vad heter du?");
 
                     // Frågar efter ålder på ägaren
                     Console.WriteLine($"Hur gammal är du {UserPerson.UserName}?");
@@ -104,23 +100,20 @@ namespace Klasser
                         UserCar.Owner = UserPerson;
 
                         // Frågar efter model på bilen
-                        Console.WriteLine("Vilket märke är din bil?");
-                        UserCar._model = Console.ReadLine();
+                        UserCar._model = SetName("Vilket märke är din bil?");
 
                         // Frågar efter Regnummer på bilen
-                        Console.WriteLine($"Vad för reg nr har {UserCar._model}?");
-                        UserCar.RegistrationNumber = Console.ReadLine().ToUpper();
+                        UserCar.RegistrationNumber = SetName($"Skriv in din {UserCar._model}s registreringsnummer");
 
                         //Frågar hur mycket bilen väger
-                        Console.WriteLine($"Hur mycket väger din {UserCar._model} i kg?");
-                        UserCar.WeightinKilograms = int.Parse(Console.ReadLine());
+                        UserCar.WeightinKilograms = SetNumber($"Hur mycket väger din {UserCar._model} i kilo?");
 
                         // Frågar när bilen skapade
                         Console.WriteLine($"När byggdes din {UserCar._model}? yyyy-mm-dd");
                         UserCar.Registred = DateTime.Parse(Console.ReadLine());
 
                         // Frågar hur långt bilet gått i mil
-                        Console.WriteLine($"Hur långt har din {UserCar._model} gått?");
+                        Console.WriteLine($"Hur många mil har {UserCar._model} kört?");
                         decimal antalMilbilenkört = 0;
                         antalMilbilenkört = Convert.ToDecimal(Console.ReadLine());
                         UserCar.SetcarMeter(antalMilbilenkört);
@@ -132,9 +125,7 @@ namespace Klasser
                         {
                             UserCar.ElectricCar = true;
                         }
-
                         UserPerson.ListofCars.Add(UserCar);
-
                         Console.WriteLine("Vill du lägga till fler bilar j/n?");
                         answer = Console.ReadLine();
                         if (answer != "j")
@@ -148,10 +139,8 @@ namespace Klasser
                                 isAddingPerson = false;
                                 break;
                             }
-
                             else
                                 break;
-
                         }
 
                     } while (isAddingCar);
@@ -164,9 +153,9 @@ namespace Klasser
                 {
                     Console.Clear();
                     Console.WriteLine("Vad vill du göra nu?" +
-                     $"\n[1] SKapa en till användare och bil?" +
-                     $"\n[2] Visa info om alla bilar?" +
-                     $"\n[4] Avsluta programmet");
+                     $"\n[1] Skapa en till användare och bil?" +
+                     $"\n[2] Visa information om nuvarande personer och deras bilar?" +
+                     $"\n[3] Avsluta programmet");
 
                     // En Console ReadLine som kontrollerar att vi skriver in en siffra och att den siffran tillhör "programinput
                     int.TryParse(Console.ReadLine(), out int programinput);
@@ -192,19 +181,15 @@ namespace Klasser
                             }
                             BackToMenu();
                             break;
-                        // Trycker man "3" kommer metoden Eat men input-parametern antalben köras.
+                        //Trycker man "3" kommer programmet avslutas
                         case 3:
-
-                            break;
-                        //Trycker man "4" kommer programmet avslutas
-                        case 4:
                             Console.Clear();
                             program = false;
                             PrintMenu = false;
                             break;
                         // Trycker man i en siffra över 5 kommer default köras och Console.WriteLine att skrivas ut.
                         default:
-                            Console.WriteLine("Du måste välja alternativ 1-4 tycke Enter för att komma tillbaka");
+                            Console.WriteLine("Du måste välja alternativ 1-4 tryck Enter för att komma tillbaka");
                             Console.ReadLine();
                             break;
                     }
@@ -213,8 +198,64 @@ namespace Klasser
         }
         public static void BackToMenu()
         {
-            Console.WriteLine("Tyck enter för att fortsätta");
+            Console.WriteLine("Tryck enter för att fortsätta");
             Console.ReadLine();
         }
+        /// <summary>
+        /// En Metod för att skriva ut Namn
+        /// </summary>
+        /// <param name="whatToAsk"></param>
+        /// <returns>Ett namn</returns>
+        public static string SetName(string whatToAsk)
+        {
+            string Name;
+            var check = true;
+            do
+            {
+                Console.WriteLine(whatToAsk);
+                Name = Console.ReadLine();
+                if (string.IsNullOrEmpty(Name))
+                {
+                    Console.WriteLine("Du måste mata in något.");
+                }
+
+                else
+                {
+                    check = false;
+                }
+
+            } while (check);
+
+            return Name;
+        }
+        /// <summary>
+        /// En metod för att skriva ut siffror
+        /// </summary>
+        /// <param name="whatToAsk"></param>
+        /// <returns>Ett tal</returns>
+        public static int SetNumber(string whatToAsk)
+        {
+            int numb = 0;
+            var isInputting = true;
+            do
+            {
+                Console.WriteLine(whatToAsk);
+
+                if (!int.TryParse(Console.ReadLine(), out numb))
+                {
+                    Console.WriteLine("Du måste skriva in ett heltal.");
+                }
+
+                else
+                {
+                    isInputting = false;
+                }
+            } while (isInputting);
+
+            return numb;
+        }
+
     }
 }
+
+
