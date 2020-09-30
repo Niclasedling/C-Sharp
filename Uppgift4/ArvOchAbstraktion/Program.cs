@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace ArvOchAbstraktion
 {
@@ -6,7 +8,25 @@ namespace ArvOchAbstraktion
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+           
+        }
+         
+       
+    }
+    public interface IVerkstad
+    {
+        public void RemoveFordon()
+        {
+
+        }
+        public void GetFordon()
+        {
+
         }
     }
+    public class Verksad :IVerkstad
+    {
+
+    }
+
 }
