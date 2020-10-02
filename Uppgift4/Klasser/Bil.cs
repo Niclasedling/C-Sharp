@@ -1,20 +1,25 @@
 ﻿using System;
+using System.Text;
 using System.Collections.Generic;
+
 
 namespace Klasser
 {
-    public class Bil : Fordon
+    public class Car : Fordon
     {
         public bool HasTowbar { get; set; }
-        public List<Bil> Billista { get; set; }
 
-        public Bil()
+
+        public void Carinfo()
         {
-            Billista = new List<Bil>();
+            Console.WriteLine($"Märke: {ModelName}" +
+                $"\nRegistrringsnummber: {RegistrationNumber}" +
+                $"\nByggdes: {Registrated}" +
+                $"\nDragkrock: {HasTowbar}");
         }
-        Bil Car = new Bil();
 
-        
+
+
     }
 
 
