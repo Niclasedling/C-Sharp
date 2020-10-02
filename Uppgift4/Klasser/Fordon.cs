@@ -16,7 +16,7 @@ namespace Klasser
 
             Console.WriteLine($"Märke: { ModelName}" +
                 $"\nReg nummer: {RegistrationNumber}" +
-                $"\nByggdes: {Registrated}" +
+                $"\nByggdes: {DateTime.Now}" +
                 $"");
 
         }

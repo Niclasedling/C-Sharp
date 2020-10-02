@@ -10,7 +10,7 @@ namespace Klasser
 
         public override void Getinfo()
         {
-            Console.WriteLine("Lastbilar:");
+            Console.WriteLine("\t---Lastbilar---");
             base.Getinfo();
             Console.WriteLine($"Max lastvikt: {MaxLoad}");
         }

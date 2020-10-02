@@ -42,6 +42,7 @@ namespace ArvOchAbstraktion
                         Console.Clear();
                         var bike = MakeBike();
                         verkstad.Fordonslista.Add(bike);
+                        Console.Clear();
                         BackToMenu();
 
                         break;
@@ -49,6 +50,7 @@ namespace ArvOchAbstraktion
                         Console.Clear();
                         var bus = MakeBus();
                         verkstad.Fordonslista.Add(bus);
+                        Console.Clear();
                         BackToMenu();
                         
                         break;
@@ -56,6 +58,7 @@ namespace ArvOchAbstraktion
                         Console.Clear();
                         var truck = MakeTruck();
                         verkstad.Fordonslista.Add(truck);
+                        Console.Clear();
                         BackToMenu();
 
                         break;
@@ -80,7 +83,7 @@ namespace ArvOchAbstraktion
         }
         public static void BackToMenu()
         {
-            Console.WriteLine("Tryck enter för att fortsätta");
+            Console.WriteLine("Tryck enter för att komma till meny");
             Console.ReadLine();
         }
         public class Verksad : IVerkstad
@@ -140,8 +143,6 @@ namespace ArvOchAbstraktion
             car.ModelName = SetName("Vilket märke har din bil?");
             car.RegistrationNumber = SetName("Skriv in bilens Registreringsnummer").ToUpper();
             car.OdoMeter = SetNumber($"Hur långt har {car.ModelName} gått i mil?");
-            Console.WriteLine($"När byggdes {car.ModelName} ? yyyy-mm-dd");
-            car.Registrated = DateTime.Parse(Console.ReadLine());
             Console.WriteLine($"Har din {car.ModelName} en dragkrog? j/n");
             string answer = Console.ReadLine();
             if (answer == "j")
@@ -162,8 +163,6 @@ namespace ArvOchAbstraktion
             bike.ModelName = SetName("Vilket märke har din motorcykel?");
             bike.RegistrationNumber = SetName("Skriv in motorcycklens registretingsnummer").ToUpper();
             bike.OdoMeter = SetNumber($"Hur långt har {bike.ModelName} gått i mil?");
-            Console.WriteLine($"När byggdes {bike.ModelName}? yyyy-mm-dd");
-            bike.Registrated = DateTime.Parse(Console.ReadLine());
             bike.MaxSpeed = SetNumber($"Vad är {bike.ModelName} maxhastiget km/h?");
             Console.WriteLine("Lägger till motorcykeln i Fordonslistan");
 
@@ -176,8 +175,6 @@ namespace ArvOchAbstraktion
             bus.ModelName = SetName("Vilket märke har din buss?");
             bus.RegistrationNumber = SetName("Skriv in bussens registretingsnummer").ToUpper();
             bus.OdoMeter = SetNumber($"Hur långt har {bus.ModelName} gått i mil?");
-            Console.WriteLine($"När byggdes {bus.ModelName}? yyyy-mm-dd");
-            bus.Registrated = DateTime.Parse(Console.ReadLine());
             bus.MaxPassengers = SetNumber("Totalt antal passagerare som får vara på bussen?");
             Console.WriteLine("Lägger till bussen i fordonslistan");
 
@@ -190,8 +187,6 @@ namespace ArvOchAbstraktion
             truck.ModelName = SetName("Vilket märke har Lastbilen");
             truck.RegistrationNumber = SetName("Skriv in lastbilens registretingsnummer").ToUpper();
             truck.OdoMeter = SetNumber($"Hur långt har {truck.ModelName} gått i mil?");
-            Console.WriteLine($"När byggdes {truck.ModelName}? yyyy-mm-dd");
-            truck.Registrated = DateTime.Parse(Console.ReadLine());
             truck.MaxLoad = SetNumber($"Vad är {truck.ModelName} max lastkapacitet i kilo?");
             Console.WriteLine("Lägger till lastbilen i Fordonslistan");
 

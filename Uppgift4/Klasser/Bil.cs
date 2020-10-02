@@ -11,7 +11,7 @@ namespace Klasser
 
         public override void Getinfo()
         {
-            Console.WriteLine("Bilar:");
+            Console.WriteLine("\t----Bilar---");
             base.Getinfo();
             if (HasTowbar)
             {

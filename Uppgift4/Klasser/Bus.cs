@@ -10,7 +10,7 @@ namespace Klasser
 
         public override void Getinfo()
         {
-            Console.WriteLine("Bussar:");
+            Console.WriteLine("\t---Bussar---");
             base.Getinfo();
             Console.WriteLine($"Max antal passagerare:{MaxPassengers}");
         }
