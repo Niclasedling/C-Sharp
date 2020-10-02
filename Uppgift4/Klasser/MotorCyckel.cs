@@ -8,14 +8,11 @@ namespace Klasser
     {
         public int MaxSpeed { get; set; }
 
-        public void Bikeinfo()
+        public override void Getinfo()
         {
-            Console.WriteLine($"Märke: {ModelName}" +
-                $"\nRegistrringsnummber: {RegistrationNumber}" +
-                $"\nByggdes: {Registrated}" +
-                $"\nMaxHastighet: {MaxSpeed}");
+            Console.WriteLine("Motorcycklar");
+            base.Getinfo();
+            Console.WriteLine($"Max hastighet: {MaxSpeed}");
         }
-
-
     }
 }

@@ -11,5 +11,16 @@ namespace Klasser
         public decimal OdoMeter { get; set; }
         public DateTime Registrated { get; set; }
 
+        public virtual void Getinfo()
+        {
+
+            Console.WriteLine($"Märke: { ModelName}" +
+                $"\nReg nummer: {RegistrationNumber}" +
+                $"\nByggdes: {Registrated}" +
+                $"");
+
+        }
+
     }
+
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Collections.Generic;
-
+using System.Xml;
 
 namespace Klasser
 {
@@ -9,17 +9,20 @@ namespace Klasser
     {
         public bool HasTowbar { get; set; }
 
-
-        public void Carinfo()
+        public override void Getinfo()
         {
-            Console.WriteLine($"Märke: {ModelName}" +
-                $"\nRegistrringsnummber: {RegistrationNumber}" +
-                $"\nByggdes: {Registrated}" +
-                $"\nDragkrock: {HasTowbar}");
+            Console.WriteLine("Bilar:");
+            base.Getinfo();
+            if (HasTowbar)
+            {
+                Console.WriteLine("Har dragkrok");
+            }
+
+            else
+            {
+                Console.WriteLine("Har inte dragkrok");
+            }
         }
-
-
-
     }
 
 

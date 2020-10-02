@@ -13,6 +13,8 @@ namespace ArvOchAbstraktion
     {
         static void Main(string[] args)
         {
+            Verkstad verkstad = new Verkstad();
+
             var program = true;
             while (program)
             {
@@ -24,117 +26,62 @@ namespace ArvOchAbstraktion
                         "\n [5] Visa alla fordon" +
                         "\n [6] Avsluta programmet");
 
-                int.TryParse(Console.ReadLine(), out int numb);
+                int.TryParse(Console.ReadLine(), out int skapafordon);
 
-                switch (numb)
+                switch (skapafordon)
                 {
-                    case 1:
-                        Car Car = new Car();
-                        List<Car> Billista = new List<Car>();
-                        //MakeCar();
-                        //// Skapar en ny bil!
-                        Car.ModelName = SetName("Vilket märke har din bil?");
-                        Car.RegistrationNumber = SetName("Skriv in bilens Registreringsnummer").ToUpper();
-                        Car.OdoMeter = SetNumber($"Hur långt har {Car.ModelName} gått i mil?");
-                        Console.WriteLine($"När byggdes {Car.ModelName} ? yyyy-mm-dd");
-                        Car.Registrated = DateTime.Parse(Console.ReadLine());
-                        Console.WriteLine($"Har din {Car.ModelName} en dragkrog?");
-                        string answer = Console.ReadLine();
-                        if (answer == "j")
+                    case 1: // SKapar en ny bil!
+                        Console.Clear();
+                        var car = MakeCar();
+                        verkstad.Fordonslista.Add(car);
+                        Console.Clear();
+                        BackToMenu();
+
+                        break;
+                    case 2: // Skapar en ny motorcykel!
+                        Console.Clear();
+                        var bike = MakeBike();
+                        verkstad.Fordonslista.Add(bike);
+                        BackToMenu();
+
+                        break;
+                    case 3:  // Skapar en ny buss!
+                        Console.Clear();
+                        var bus = MakeBus();
+                        verkstad.Fordonslista.Add(bus);
+                        BackToMenu();
+                        
+                        break;
+                    case 4: // skapar en lastbil
+                        Console.Clear();
+                        var truck = MakeTruck();
+                        verkstad.Fordonslista.Add(truck);
+                        BackToMenu();
+
+                        break;
+                    case 5:  // Skriver ut info om alla fordon i listan fordon.
+                        Console.Clear();
+                        foreach (var fordon in verkstad.Fordonslista)
                         {
-                            Car.HasTowbar = true;
+                            fordon.Getinfo();
                         }
-                        Console.WriteLine("Lägger till bilen i Fordonslistan");
-                        // Lägger till den skapade bilen i Listan
-                        Billista.Add(Car);
-                        Console.ReadKey();
-                        Console.Clear();
+                        BackToMenu();
                         break;
-                    case 2:
-                        // Skapar en ny motorcykel!
-                        Bike Bike = new Bike();
-                        List<Bike> Bikelista = new List<Bike>();
-                        //MakeBike();
-                        Bike.ModelName = SetName("Vilket märke har din motorcykel?");
-                        Bike.RegistrationNumber = SetName("Skriv in motorcycklens registretingsnummer").ToUpper();
-                        Bike.OdoMeter = SetNumber($"Hur långt har {Bike.ModelName} gått i mil?");
-                        Console.WriteLine($"När byggdes {Bike.ModelName}? yyyy-mm-dd");
-                        Bike.Registrated = DateTime.Parse(Console.ReadLine());
-                        Bike.MaxSpeed = SetNumber($"Vad är {Bike.ModelName} maxhastiget km/h?");
-                        Console.WriteLine("Lägger till motorcykeln i Fordonslistan");
-                        Bikelista.Add(Bike);
-                        Console.ReadKey();
-                        Console.Clear();
-                        break;
-                    case 3:
-                        // Skapar en ny buss!
-                        Buss Buss = new Buss();
-                        List<Buss> Busslista = new List<Buss>();
-                        //MakeBus();
-                        Buss.ModelName = SetName("Vilket märke har din buss?");
-                        Buss.RegistrationNumber = SetName("Skriv in bussens registretingsnummer").ToUpper();
-                        Buss.OdoMeter = SetNumber($"Hur långt har {Buss.ModelName} gått i mil?");
-                        Console.WriteLine($"När byggdes {Buss.ModelName}? yyyy-mm-dd");
-                        Buss.Registrated = DateTime.Parse(Console.ReadLine());
-                        Buss.MaxPassengers = SetNumber("Totalt antal passagerare som får vara på bussen?");
-                        Console.WriteLine("Lägger till bussen i fordonslistan");
-                        Busslista.Add(Buss);
-                        Console.ReadKey();
-                        Console.Clear();
-                        break;
-                    case 4:
-                        // Skapar en Lastbil
-                        Truck Truck = new Truck();
-                        List<Truck> Trucklista = new List<Truck>();
-                        //MakeTruck();
-                        Truck.ModelName = SetName("Vilket märke har Lastbilen");
-                        Truck.RegistrationNumber = SetName("Skriv in lastbilens registretingsnummer").ToUpper();
-                        Truck.OdoMeter = SetNumber($"Hur långt har {Truck.ModelName} gått i mil?");
-                        Console.WriteLine($"När byggdes {Truck.ModelName}? yyyy-mm-dd");
-                        Truck.Registrated = DateTime.Parse(Console.ReadLine());
-                        Truck.MaxLoad = SetNumber($"Vad är {Truck.ModelName} max lastkapacitet i kilo?");
-                        Console.WriteLine("Lägger till lastbilen i Fordonslistan");
-                        Trucklista.Add(Truck);
-                        Console.ReadKey();
-                        Console.Clear();
-                        break;
-                    case 5:
-
-                        foreach (var Bil in Billista)
-                        {
-                            Console.WriteLine("Bilar:")
-
-                            Car.Carinfo();
-
-                            foreach (var Motobike in Bikelista)
-                            {
-                                Console.WriteLine("Motorcyklar:");
-                                Bike.Bikeinfo();
-
-                                foreach (var Bus in Busslista)
-                                {
-                                    Console.WriteLine("Bussar:");
-                                    Buss.Bussinfo();
-
-                                    foreach (var Lastbil in Trucklista)
-                                    {
-                                        Console.WriteLine("Lastbilar:");
-                                        Truck.Truckinfo();
-                                    }
-                                }
-                            }
-                        }
-                        break;
-                    case 6:
+                    case 6:  // Avbryter programmet
                         program = false;
                         break;
 
-                    default:
+                    default: // Om man trycker på något annat än 1-4 kommer detta att skrivas ut.
                         Console.WriteLine("Du måste välja mellan altevertiv 1-4");
                         break;
                 }
 
             }
+        }
+        public static void BackToMenu()
+        {
+            Console.WriteLine("Tryck enter för att fortsätta");
+            Console.ReadLine();
         }
         public class Verksad : IVerkstad
         {
@@ -186,71 +133,71 @@ namespace ArvOchAbstraktion
 
             return numb;
         }
-        //public static void MakeCar()
-        //{
-        //    Car Car = new Car();
+        public static Car MakeCar()
+        {
+            Car car = new Car();
 
-        //    Car.ModelName = SetName("Vilket märke har din bil?");
-        //    Car.RegistrationNumber = SetName("Skriv in bilens Registreringsnummer").ToUpper();
-        //    Car.OdoMeter = SetNumber($"Hur långt har {Car.ModelName} gått i mil?");
-        //    Console.WriteLine($"När byggdes {Car.ModelName} ? yyyy-mm-dd");
-        //    Car.Registrated = DateTime.Parse(Console.ReadLine());
-        //    Console.WriteLine($"Har din {Car.ModelName} en dragkrog?");
-        //    string answer = Console.ReadLine();
-        //    if (answer == "j")
-        //    {
-        //        Car.HasTowbar = true;
-        //    }
-        //    Console.WriteLine("Lägger till bilen i Fordonslistan");
-        //    // Lägger till den skapade bilen i Listan
-        //    //Billista.Add(Car);
-        //    Console.ReadKey();
-        //    Console.Clear();
-        //}
-        //public static void MakeBike()
-        //{
-        //    Bike Bike = new Bike();
+            car.ModelName = SetName("Vilket märke har din bil?");
+            car.RegistrationNumber = SetName("Skriv in bilens Registreringsnummer").ToUpper();
+            car.OdoMeter = SetNumber($"Hur långt har {car.ModelName} gått i mil?");
+            Console.WriteLine($"När byggdes {car.ModelName} ? yyyy-mm-dd");
+            car.Registrated = DateTime.Parse(Console.ReadLine());
+            Console.WriteLine($"Har din {car.ModelName} en dragkrog? j/n");
+            string answer = Console.ReadLine();
+            if (answer == "j")
+            {
+                car.HasTowbar = true;
 
-        //    Bike.ModelName = SetName("Vilket märke har din motorcykel?");
-        //    Bike.RegistrationNumber = SetName("Skriv in motorcycklens registretingsnummer").ToUpper();
-        //    Bike.OdoMeter = SetNumber($"Hur långt har {Bike.ModelName} gått i mil?");
-        //    Console.WriteLine($"När byggdes {Bike.ModelName}? yyyy-mm-dd");
-        //    Bike.Registrated = DateTime.Parse(Console.ReadLine());
-        //    Bike.MaxSpeed = SetNumber($"Vad är {Bike.ModelName} maxhastiget km/h?");
-        //    Console.WriteLine("Lägger till motorcykeln i Fordonslistan");
-        //    Console.ReadKey();
-        //    Console.Clear();
-        //}
-        //public static void MakeBus()
-        //{
-        //    Buss Buss = new Buss();
+               
+            }
+            Console.WriteLine("Lägger till bilen i Fordonslistan");
+            return car;
+           
+            
+        }
+        public static Bike MakeBike()
+        {
+            Bike bike = new Bike();
 
-        //    Buss.ModelName = SetName("Vilket märke har din buss?");
-        //    Buss.RegistrationNumber = SetName("Skriv in bussens registretingsnummer").ToUpper();
-        //    Buss.OdoMeter = SetNumber($"Hur långt har {Buss.ModelName} gått i mil?");
-        //    Console.WriteLine($"När byggdes {Buss.ModelName}? yyyy-mm-dd");
-        //    Buss.Registrated = DateTime.Parse(Console.ReadLine());
-        //    Buss.MaxPassengers = SetNumber("Totalt antal passagerare som får vara på bussen?");
-        //    Console.WriteLine("Lägger till bussen i fordonslistan");
-        //    //Busslista.Add(Buss);
-        //    Console.ReadKey();
-        //    Console.Clear();
-        //}
-        //public static void MakeTruck()
-        //{
-        //    Truck Truck = new Truck();
+            bike.ModelName = SetName("Vilket märke har din motorcykel?");
+            bike.RegistrationNumber = SetName("Skriv in motorcycklens registretingsnummer").ToUpper();
+            bike.OdoMeter = SetNumber($"Hur långt har {bike.ModelName} gått i mil?");
+            Console.WriteLine($"När byggdes {bike.ModelName}? yyyy-mm-dd");
+            bike.Registrated = DateTime.Parse(Console.ReadLine());
+            bike.MaxSpeed = SetNumber($"Vad är {bike.ModelName} maxhastiget km/h?");
+            Console.WriteLine("Lägger till motorcykeln i Fordonslistan");
 
-        //    Truck.ModelName = SetName("Vilket märke har Lastbilen");
-        //    Truck.RegistrationNumber = SetName("Skriv in lastbilens registretingsnummer").ToUpper();
-        //    Truck.OdoMeter = SetNumber($"Hur långt har {Truck.ModelName} gått i mil?");
-        //    Console.WriteLine($"När byggdes {Truck.ModelName}? yyyy-mm-dd");
-        //    Truck.Registrated = DateTime.Parse(Console.ReadLine());
-        //    Truck.MaxLoad = SetNumber($"Vad är {Truck.ModelName} max lastkapacitet i kilo?");
-        //    Console.WriteLine("Lägger till lastbilen i Fordonslistan");
-        //    //Trucklista.Add(Truck);
-        //    Console.ReadKey();
-        //    Console.Clear();
-        //}
+            return bike;
+        }
+        public static Bus MakeBus()
+        {
+            Bus bus = new Bus();
+
+            bus.ModelName = SetName("Vilket märke har din buss?");
+            bus.RegistrationNumber = SetName("Skriv in bussens registretingsnummer").ToUpper();
+            bus.OdoMeter = SetNumber($"Hur långt har {bus.ModelName} gått i mil?");
+            Console.WriteLine($"När byggdes {bus.ModelName}? yyyy-mm-dd");
+            bus.Registrated = DateTime.Parse(Console.ReadLine());
+            bus.MaxPassengers = SetNumber("Totalt antal passagerare som får vara på bussen?");
+            Console.WriteLine("Lägger till bussen i fordonslistan");
+
+            return bus;
+        }
+        public static Truck MakeTruck()
+        {
+            Truck truck = new Truck();
+
+            truck.ModelName = SetName("Vilket märke har Lastbilen");
+            truck.RegistrationNumber = SetName("Skriv in lastbilens registretingsnummer").ToUpper();
+            truck.OdoMeter = SetNumber($"Hur långt har {truck.ModelName} gått i mil?");
+            Console.WriteLine($"När byggdes {truck.ModelName}? yyyy-mm-dd");
+            truck.Registrated = DateTime.Parse(Console.ReadLine());
+            truck.MaxLoad = SetNumber($"Vad är {truck.ModelName} max lastkapacitet i kilo?");
+            Console.WriteLine("Lägger till lastbilen i Fordonslistan");
+
+            return truck;
+
+        }
 
 
 

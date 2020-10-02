@@ -4,16 +4,15 @@ using System.Text;
 
 namespace Klasser
 {
-    public class Truck : Fordon
+    public class Bus : Fordon
     {
-        public int MaxLoad { get; set; }
+        public int MaxPassengers { get; set; }
 
         public override void Getinfo()
         {
-            Console.WriteLine("Lastbilar:");
+            Console.WriteLine("Bussar:");
             base.Getinfo();
-            Console.WriteLine($"Max lastvikt: {MaxLoad}");
+            Console.WriteLine($"Max antal passagerare:{MaxPassengers}");
         }
     }
 }
-
