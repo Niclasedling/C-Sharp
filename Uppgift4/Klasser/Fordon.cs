@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Klasser
 {
-    public abstract class Fordon
+    public class Fordon
     {
         public string ModelName { get; set; }
         public string RegistrationNumber { get; set; }
