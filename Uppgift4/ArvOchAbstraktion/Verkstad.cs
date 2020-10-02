@@ -22,15 +22,39 @@ namespace ArvOchAbstraktion
         {
             Fordonslista.Add((fordon));
         }
-        public void RemoveFordon(Fordon fordon)
+        public List<Fordon> RemoveFordon(Fordon fordon)
         {
             Fordonslista.Remove((fordon));
+            int i = -1;
+            foreach (var item in Fordonslista)
+            {
+                i++;
+                Console.WriteLine("");
+                Console.WriteLine($"Model: {item.ModelName}");
+                Console.WriteLine($"Registration number : {item.RegistrationNumber}");
+                Console.WriteLine($"Odenmeter: {item.OdoMeter}");
+                
+                Console.WriteLine("Do you want to delete this motorcycle?(y/n)");
+                string input = Console.ReadLine();
+                if (input.ToLower() == "y")
+                {
+                    Fordonslista.Remove(fordon);
+
+                    Console.WriteLine("You have delet one motorcyle!");
+                    Console.WriteLine("press enter to contiue to main menu.");
+                    Console.ReadKey();
+                    break;
+                }
+                Console.WriteLine("");
+            }
+            return Fordonslista;
         }
+
        
 
 
 
-        public void program2()
+        public void Input()
         {
 
             Verkstad verkstad = new Verkstad();
@@ -90,6 +114,7 @@ namespace ArvOchAbstraktion
                         BackToMenu();
                         break;
                     case 6:  // Avbryter programmet
+                        Console.Clear();
                         program = false;
                         break;
 
@@ -101,6 +126,7 @@ namespace ArvOchAbstraktion
             }
             
         }
+
         public static void BackToMenu()
         {
             Console.WriteLine("Tryck enter för att komma till meny");
@@ -207,6 +233,7 @@ namespace ArvOchAbstraktion
             return truck;
 
         }
+
        
     }
 

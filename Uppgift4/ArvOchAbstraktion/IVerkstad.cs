@@ -8,6 +8,6 @@ namespace ArvOchAbstraktion
     interface IVerkstad
     {
         public void GetFordon(Fordon fordon);
-        public void RemoveFordon(Fordon fordon);
+        public List<Fordon> RemoveFordon(Fordon fordon);
     }
 }

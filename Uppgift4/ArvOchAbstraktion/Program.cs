@@ -27,11 +27,11 @@ namespace ArvOchAbstraktion
                 switch (skapafordon)
                 {
                     case 1:
-                        backend.program2();
+                        Console.Clear();
+                        backend.Input();
                         break;
                     case 2:
-
-                        
+                        //backend.RemoveFordon(Fordon);
                         break;
                     case 3:
                         check = false;
