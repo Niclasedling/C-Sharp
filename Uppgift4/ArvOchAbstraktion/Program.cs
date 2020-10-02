@@ -1,5 +1,11 @@
 ﻿using System;
 using System.Dynamic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using Klasser;
+using System.Globalization;
+using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 
 namespace ArvOchAbstraktion
 {
@@ -7,31 +13,39 @@ namespace ArvOchAbstraktion
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+
+            Verkstad backend = new Verkstad();
+            var check = true;
+            while (check)
+            {
+                Console.WriteLine("Välj ett alternativ" +
+                    "\n [1] Lägg  till ett fordon" +
+                    "\n [2] Ta bort ett fordon" +
+                    "\n [3] Avsluta program");
+
+                int.TryParse(Console.ReadLine(), out int skapafordon);
+                switch (skapafordon)
+                {
+                    case 1:
+                        Console.Clear();
+                        backend.Input();
+                        break;
+                    case 2:
+                        //backend.RemoveFordon(Fordon);
+                        break;
+                    case 3:
+                        check = false;
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+            
         }
     }
-    public class Fordon
-    {
-        string ModelName { get; set; }
-        string RegistrationNumber { get; set; }
-        decimal OdoMeter { get; set; }
-        DateTime Registrated { get; set; }
-    }
-    public class Car : Fordon
-    {
-        bool TowBar { get; set; }
-    }
-    public class Truck : Fordon
-    {
-        int MaxWeightinkilo { get; set; }
-    }
-    public class MotorBike : Fordon
-    {
-        int MaxSpeed { get; set; }
-    }
-    publicc class Buss : Fordon
-    {
-        int MaxPassengers { get; set; }
-    }
+    
+
 
 }
+

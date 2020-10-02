@@ -1,20 +1,28 @@
 ﻿using System;
+using System.Text;
 using System.Collections.Generic;
+using System.Xml;
 
 namespace Klasser
 {
-    public class Bil : Fordon
+    public class Car : Fordon
     {
         public bool HasTowbar { get; set; }
-        public List<Bil> Billista { get; set; }
 
-        public Bil()
+        public override void Getinfo()
         {
-            Billista = new List<Bil>();
-        }
-        Bil Car = new Bil();
+            Console.WriteLine("\t----Bilar---");
+            base.Getinfo();
+            if (HasTowbar)
+            {
+                Console.WriteLine("Har dragkrok");
+            }
 
-        
+            else
+            {
+                Console.WriteLine("Har inte dragkrok");
+            }
+        }
     }
 
 

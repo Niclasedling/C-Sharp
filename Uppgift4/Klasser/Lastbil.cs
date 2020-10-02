@@ -4,8 +4,16 @@ using System.Text;
 
 namespace Klasser
 {
-    class Lastbil : Fordon
+    public class Truck : Fordon
     {
         public int MaxLoad { get; set; }
+
+        public override void Getinfo()
+        {
+            Console.WriteLine("\t---Lastbilar---");
+            base.Getinfo();
+            Console.WriteLine($"Max lastvikt: {MaxLoad}");
+        }
     }
 }
+
