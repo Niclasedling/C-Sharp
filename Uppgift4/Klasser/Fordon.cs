@@ -13,12 +13,9 @@ namespace Klasser
 
         public virtual void Getinfo()
         {
-
             Console.WriteLine($"Märke: { ModelName}" +
                 $"\nReg nummer: {RegistrationNumber}" +
-                $"\nByggdes: {DateTime.Now}" +
-                $"");
-
+                $"\nByggdes: {DateTime.Now}");
         }
 
     }

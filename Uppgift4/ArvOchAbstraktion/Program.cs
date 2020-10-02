@@ -18,11 +18,11 @@ namespace ArvOchAbstraktion
             var program = true;
             while (program)
             {
-                Console.WriteLine("Vad vill du göra för något?" +
+                Console.WriteLine("Välj ett alternativ?" +
                         "\n [1] Skapa en bil" +
-                        "\n [2] Skapa en Motorcyckel" +
-                        "\n [3] Skapa en Buss" +
-                        "\n [4] Skapa en Lastbil" +
+                        "\n [2] Skapa en motorcyckel" +
+                        "\n [3] Skapa en buss" +
+                        "\n [4] Skapa en lastbil" +
                         "\n [5] Visa alla fordon" +
                         "\n [6] Avsluta programmet");
 
@@ -33,7 +33,7 @@ namespace ArvOchAbstraktion
                     case 1: // SKapar en ny bil!
                         Console.Clear();
                         var car = MakeCar();
-                        verkstad.Fordonslista.Add(car);
+                        verkstad.GetFordon(car);
                         Console.Clear();
                         BackToMenu();
 
@@ -41,7 +41,7 @@ namespace ArvOchAbstraktion
                     case 2: // Skapar en ny motorcykel!
                         Console.Clear();
                         var bike = MakeBike();
-                        verkstad.Fordonslista.Add(bike);
+                        verkstad.GetFordon(bike);
                         Console.Clear();
                         BackToMenu();
 
@@ -49,7 +49,7 @@ namespace ArvOchAbstraktion
                     case 3:  // Skapar en ny buss!
                         Console.Clear();
                         var bus = MakeBus();
-                        verkstad.Fordonslista.Add(bus);
+                        verkstad.GetFordon(bus);
                         Console.Clear();
                         BackToMenu();
                         
@@ -57,7 +57,7 @@ namespace ArvOchAbstraktion
                     case 4: // skapar en lastbil
                         Console.Clear();
                         var truck = MakeTruck();
-                        verkstad.Fordonslista.Add(truck);
+                        verkstad.GetFordon(truck);
                         Console.Clear();
                         BackToMenu();
 
