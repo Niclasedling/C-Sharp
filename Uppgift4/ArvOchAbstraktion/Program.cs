@@ -31,7 +31,15 @@ namespace ArvOchAbstraktion
                         backend.Input();
                         break;
                     case 2:
-                        //backend.RemoveFordon(Fordon);
+                       
+                        foreach (var bil in backend.Fordonslista)
+                        {
+                            bil.Getinfo();
+                            
+                        }
+                        Console.WriteLine("Vilket fordon vill du ta bort?");
+                        var regNr = Console.ReadLine();
+                        backend.RemoveFordon(regNr);
                         break;
                     case 3:
                         check = false;

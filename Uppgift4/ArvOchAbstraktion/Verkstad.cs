@@ -12,51 +12,8 @@ namespace ArvOchAbstraktion
 
     public class Verkstad : IVerkstad
     {
-    public List<Fordon> Fordonslista { get; set; }
-
-        public Verkstad()
-        {
-            Fordonslista = new List<Fordon>();
-        }
-        public void GetFordon(Fordon fordon)
-        {
-            Fordonslista.Add((fordon));
-        }
-        public List<Fordon> RemoveFordon(Fordon fordon)
-        {
-            Fordonslista.Remove((fordon));
-            int i = -1;
-            foreach (var item in Fordonslista)
-            {
-                i++;
-                Console.WriteLine("");
-                Console.WriteLine($"Model: {item.ModelName}");
-                Console.WriteLine($"Registration number : {item.RegistrationNumber}");
-                Console.WriteLine($"Odenmeter: {item.OdoMeter}");
-                
-                Console.WriteLine("Do you want to delete this motorcycle?(y/n)");
-                string input = Console.ReadLine();
-                if (input.ToLower() == "y")
-                {
-                    Fordonslista.Remove(fordon);
-
-                    Console.WriteLine("You have delet one motorcyle!");
-                    Console.WriteLine("press enter to contiue to main menu.");
-                    Console.ReadKey();
-                    break;
-                }
-                Console.WriteLine("");
-            }
-            return Fordonslista;
-        }
-
-       
-
-
-
         public void Input()
         {
-
             Verkstad verkstad = new Verkstad();
             var program = true;
             while (program)
@@ -76,7 +33,7 @@ namespace ArvOchAbstraktion
                     case 1: // SKapar en ny bil!
                         Console.Clear();
                         var car = MakeCar();
-                        verkstad.GetFordon(car);
+                        verkstad.AddFordon(car);
                         Console.Clear();
                         BackToMenu();
 
@@ -84,7 +41,7 @@ namespace ArvOchAbstraktion
                     case 2: // Skapar en ny motorcykel!
                         Console.Clear();
                         var bike = MakeBike();
-                        verkstad.GetFordon(bike);
+                        verkstad.AddFordon(bike);
                         Console.Clear();
                         BackToMenu();
 
@@ -92,7 +49,7 @@ namespace ArvOchAbstraktion
                     case 3:  // Skapar en ny buss!
                         Console.Clear();
                         var bus = MakeBus();
-                        verkstad.GetFordon(bus);
+                        verkstad.AddFordon(bus);
                         Console.Clear();
                         BackToMenu();
 
@@ -100,7 +57,7 @@ namespace ArvOchAbstraktion
                     case 4: // skapar en lastbil
                         Console.Clear();
                         var truck = MakeTruck();
-                        verkstad.GetFordon(truck);
+                        verkstad.AddFordon(truck);
                         Console.Clear();
                         BackToMenu();
 
@@ -126,13 +83,27 @@ namespace ArvOchAbstraktion
             }
             
         }
+        public List<Fordon> Fordonslista { get; set; }
+
+        public Verkstad()
+        {
+            Fordonslista = new List<Fordon>();
+        }
+        public void AddFordon(Fordon fordon)
+        {
+            Fordonslista.Add((fordon));
+        }
+        public void RemoveFordon(string regNr)
+        {
+            var index = Fordonslista.FindIndex(bil => bil.RegistrationNumber == regNr);
+            Fordonslista.RemoveAt(index);
+        }
 
         public static void BackToMenu()
         {
             Console.WriteLine("Tryck enter för att komma till meny");
             Console.ReadLine();
         }
-       
         public static string SetName(string whatToAsk)
         {
             string Name;
@@ -233,8 +204,9 @@ namespace ArvOchAbstraktion
             return truck;
 
         }
-
        
+
+
     }
 
 }
