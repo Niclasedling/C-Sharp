@@ -7,7 +7,15 @@ namespace ArvOchAbstraktion
 {
     interface IVerkstad
     {
-        public void AddFordon(Fordon fordon);
-        public void RemoveFordon(string regNr);
+        /// <summary>
+        /// Lägger till ett fordon till verkstaden
+        /// </summary>
+        /// <param name="fordon"></param>
+        public void AddVehicles(Fordon fordon);
+        /// <summary>
+        /// Tar bort ett fordon i listan men hjälp av registreringsnummer som sökväg
+        /// </summary>
+        public void RemoveVehicles();
+        public List<Fordon> Fordonslista { get; set; }
     }
 }

@@ -8,7 +8,9 @@ namespace Klasser
     public class Car : Fordon
     {
         public bool HasTowbar { get; set; }
-
+        /// <summary>
+        /// Skriver ut info om bilar!
+        /// </summary>
         public override void Getinfo()
         {
             Console.WriteLine("\t----Bilar---");
