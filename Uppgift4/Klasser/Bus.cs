@@ -7,7 +7,9 @@ namespace Klasser
     public class Bus : Fordon
     {
         public int MaxPassengers { get; set; }
-
+        /// <summary>
+        /// Skriver ut all info om Lastbilar
+        /// </summary>
         public override void Getinfo()
         {
             Console.WriteLine("\t---Bussar---");

@@ -7,6 +7,9 @@ namespace Klasser
     public class Truck : Fordon
     {
         public int MaxLoad { get; set; }
+        /// <summary>
+        /// Skriver ut all info om Lastbilar
+        /// </summary>
 
         public override void Getinfo()
         {
