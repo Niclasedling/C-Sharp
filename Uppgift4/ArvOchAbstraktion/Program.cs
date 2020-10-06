@@ -30,20 +30,33 @@ namespace ArvOchAbstraktion
                     case 1:
                         CreateVehicles(verkstad);
                         break;
+
                     case 2:
-                        Console.WriteLine("Skriv in regummer på det fordon du vill ta bort");
+                        Console.WriteLine("Skriv in regummer på det fordon du vill checka ut ifrån verkstaden");
                         verkstad.RemoveVehicles();
                         break;
+
                     case 3:
+
                         check = false;
                         break;
                     case 4:
-                        foreach (var fordon in verkstad.Fordonslista)
-                        {
-                            fordon.Getinfo();
-                        }
+                        Console.Clear();
+                        
+                        if (verkstad.Fordonslista.Count == 0)
+                        
+                            Console.WriteLine("----Just nu står det inga fordon på verkstaden---" +
+                                "\n ");
+                        
+                        else
+                            foreach (var fordon in verkstad.Fordonslista)
+                            {
+                                fordon.Getinfo();
+                            }
+                        
+                        BackToMenu();
                         break;
-
+                        
                     default:
                         Console.WriteLine("Du måste välja alternativ 1-4");
                         break;
@@ -75,42 +88,46 @@ namespace ArvOchAbstraktion
                 {
                     case 1: // SKapar en ny bil!
                         Console.Clear();
-                        var car = MakeCar();
+                        var car = AddCar();
                         verkstad.AddVehicles(car);
                         Console.Clear();
                         car.Getinfo();
-                        Console.WriteLine("Lägger till bilen i verkstaden");
-                        BackToMenu();
+                        Console.WriteLine("Lägger till bilen i verkstaden" +
+                            "\n ");
+                        program = false;
 
                         break;
                     case 2: // Skapar en ny motorcykel!
                         Console.Clear();
-                        var bike = MakeBike();
+                        var bike = AddBike();
                         verkstad.AddVehicles(bike);
                         Console.Clear();
                         bike.Getinfo();
-                        Console.WriteLine("Lägger till motorcyckeln i verkstaden");
-                        BackToMenu();
+                        Console.WriteLine("Lägger till motorcyckeln i verkstaden" +
+                            "\n ");
+                        program = false;
 
                         break;
                     case 3:  // Skapar en ny buss!
                         Console.Clear();
-                        var bus = MakeBus();
+                        var bus = AddBus();
                         verkstad.AddVehicles(bus);
                         Console.Clear();
                         bus.Getinfo();
-                        Console.WriteLine("Lägger till bussen i verkstaden");
-                        BackToMenu();
+                        Console.WriteLine("Lägger till bussen i verkstaden" +
+                            "\n ");
+                        program = false;
 
                         break;
                     case 4: // skapar en lastbil
                         Console.Clear();
-                        var truck = MakeTruck();
+                        var truck = AddTruck();
                         verkstad.AddVehicles(truck);
                         Console.Clear();
                         truck.Getinfo();
-                        Console.WriteLine("Lägger till lastbilen i verkstaden");
-                        BackToMenu();
+                        Console.WriteLine("Lägger till lastbilen i verkstaden" +
+                            "\n ");
+                        program = false;
 
                         break;
                     case 5:  // Skriver ut info om alla fordon i listan fordon.
@@ -119,7 +136,7 @@ namespace ArvOchAbstraktion
                         {
                             fordon.Getinfo();
                         }
-                        BackToMenu();
+                        program = false;
                         break;
                     case 6:  // Avbryter programmet
                         Console.Clear();
@@ -198,7 +215,7 @@ namespace ArvOchAbstraktion
         /// Skapar en bil
         /// </summary>
         /// <returns>En bil</returns>
-        public static Car MakeCar()
+        public static Car AddCar()
         {
             Car car = new Car();
 
@@ -206,23 +223,18 @@ namespace ArvOchAbstraktion
             car.RegistrationNumber = SetName("Skriv in bilens Registreringsnummer: ").ToUpper();
             car.OdoMeter = SetNumber($"Hur långt har {car.ModelName} gått i mil? ");
             Console.Write($"Har din {car.ModelName} en dragkrog? j/n: ");
-            string answer = Console.ReadLine();
+            var answer = Console.ReadLine().ToLower();
             if (answer == "j")
-            {
+            
                 car.HasTowbar = true;
 
-
-            }
             return car;
-            
-
-
         }
         /// <summary>
         /// Skapar en motorcykel
         /// </summary>
         /// <returns>En motorcykel</returns>
-        public static Bike MakeBike()
+        public static Bike AddBike()
         {
             Bike bike = new Bike();
 
@@ -237,7 +249,7 @@ namespace ArvOchAbstraktion
         /// Skapar en bus
         /// </summary>
         /// <returns>En buss</returns>
-        public static Bus MakeBus()
+        public static Bus AddBus()
         {
             Bus bus = new Bus();
 
@@ -246,14 +258,13 @@ namespace ArvOchAbstraktion
             bus.OdoMeter = SetNumber($"Hur långt har {bus.ModelName} gått i mil? ");
             bus.MaxPassengers = SetNumber("Totalt antal passagerare som får vara på bussen? ");
             
-
             return bus;
         }
         /// <summary>
         /// Skapar en lastbil
         /// </summary>
         /// <returns>En lastbil</returns>
-        public static Truck MakeTruck()
+        public static Truck AddTruck()
         {
             Truck truck = new Truck();
 
@@ -262,9 +273,7 @@ namespace ArvOchAbstraktion
             truck.OdoMeter = SetNumber($"Hur långt har {truck.ModelName} gått i mil? ");
             truck.MaxLoad = SetNumber($"Vad är {truck.ModelName} max lastkapacitet i kilo? ");
             
-
             return truck;
-
         }
     }
 

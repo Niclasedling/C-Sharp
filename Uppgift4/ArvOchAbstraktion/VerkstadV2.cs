@@ -1,23 +1,15 @@
-﻿using System;
-using System.Dynamic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using Klasser;
-using System.Globalization;
+﻿using Klasser;
+using System;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
+using System.Text;
 
 namespace ArvOchAbstraktion
 {
-
-    public class Verkstad : IVerkstad
+    class VerkstadV2 : IVerkstad
     {
-       
-        
-
         public List<Fordon> Fordonslista { get; set; }
 
-        public Verkstad()
+        public VerkstadV2()
         {
             Fordonslista = new List<Fordon>();
         }
@@ -29,10 +21,12 @@ namespace ArvOchAbstraktion
         {
             Fordonslista.Add(fordon);
         }
-      
+        /// <summary>
+        /// Tar bort ett fordon från verkstaden
+        /// </summary>
         public void RemoveVehicles()
         {
-           
+
             var regnummerTomatch = Console.ReadLine().ToUpper();
             Fordon bilAttTabort = null;
 
@@ -46,15 +40,28 @@ namespace ArvOchAbstraktion
             if (bilAttTabort != null)
             {
                 Fordonslista.Remove(bilAttTabort);
-                Console.WriteLine($"Fordon med regNr {regnummerTomatch} har checkat ur verkstaden");
             }
             else
             {
-                Console.WriteLine($"En bil med regNr {regnummerTomatch} hittades inte i verkstaden.");
+                Console.WriteLine($"En bil med registreringsnummret {regnummerTomatch} hittades inte i verkstaden.");
             }
         }
-        
+
+        //public bool TrytoAddVehicles(Bike bike)
+        //{
+        //    var moped = bike;
+
+        //    if (bike.MaxSpeed <= 50)
+        //    {
+        //        bike = moped;
+        //    }
+        //    else
+        //    {
+        //        return bike;
+        //    }
+            
+
+        //}
+
     }
 }
-
-
