@@ -47,21 +47,21 @@ namespace ArvOchAbstraktion
             }
         }
 
-        //public bool TrytoAddVehicles(Bike bike)
-        //{
-        //    var moped = bike;
+        public bool TrytoAddVehicles(Bike bike)
+        {
+            var moped = bike;
 
-        //    if (bike.MaxSpeed <= 50)
-        //    {
-        //        bike = moped;
-        //    }
-        //    else
-        //    {
-        //        return bike;
-        //    }
-            
+            if (bike.MaxSpeed <= 50)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 
-        //}
+
+        }
 
     }
 }

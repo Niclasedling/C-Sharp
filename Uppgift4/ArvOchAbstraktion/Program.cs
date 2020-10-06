@@ -49,7 +49,7 @@ namespace ArvOchAbstraktion
                         break;
 
                     case 3:
-
+                        
                         check = false;
                         break;
                     case 4:

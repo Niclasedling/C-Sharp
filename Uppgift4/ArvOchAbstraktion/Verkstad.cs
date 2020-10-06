@@ -53,7 +53,20 @@ namespace ArvOchAbstraktion
                 Console.WriteLine($"En bil med regNr {regnummerTomatch} hittades inte i verkstaden.");
             }
         }
-        
+        public bool TrytoAddVehicles(Bike bike)
+        {
+            
+            if (bike.MaxSpeed <= 50)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+
+        }
     }
 }
 
