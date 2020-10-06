@@ -15,14 +15,26 @@ namespace ArvOchAbstraktion
         {
 
             IVerkstad verkstad = new Verkstad();
+            startProgram(verkstad);
+
+        }
+        /// <summary>
+        /// Startar main
+        /// </summary>
+        /// <param name="verkstad"></param>
+        private static void startProgram(IVerkstad verkstad)
+        {
             var check = true;
             while (check)
             {
-                Console.WriteLine("Välj ett alternativ" +
-                    "\n [1] Lägg till ett fordon" +
-                    "\n [2] Ta bort ett fordon" +
-                    "\n [3] Avsluta program" +
-                    "\n [4] Visa alla fordon i verkstaden");
+                Console.WriteLine("----Välkommen till hasses fordonsverkstad----" +
+                    "\n " +
+                    "\t Vad vill vår kära kund göra?" +
+                    "\n " +
+                    "\n [1] Lämna till ett fordon" +
+                    "\n [2] Hämta ett fordon" +
+                    "\n [3] Avsluta vistelsen" +
+                    "\n [4] Titta på alla fordon i verkstaden");
 
                 int.TryParse(Console.ReadLine(), out int addVehicles);
                 switch (addVehicles)
@@ -42,28 +54,28 @@ namespace ArvOchAbstraktion
                         break;
                     case 4:
                         Console.Clear();
-                        
+
                         if (verkstad.Fordonslista.Count == 0)
-                        
-                            Console.WriteLine("----Just nu står det inga fordon på verkstaden---" +
+
+                            Console.WriteLine("Just nu står det inga fordon på verkstaden" +
                                 "\n ");
-                        
+
                         else
                             foreach (var fordon in verkstad.Fordonslista)
                             {
                                 fordon.Getinfo();
                             }
-                        
+
                         BackToMenu();
                         break;
-                        
+
                     default:
                         Console.WriteLine("Du måste välja alternativ 1-4");
                         break;
                 }
             }
-            
         }
+
         /// <summary>
         /// Skapar ett fordon och lägger till i Listan Fordon
         /// </summary>
@@ -74,11 +86,11 @@ namespace ArvOchAbstraktion
             var program = true;
             while (program)
             {
-                Console.WriteLine("Välj ett alternativ?" +
-                        "\n [1] Lägga till en bil" +
-                        "\n [2] Lägga till en motorcyckel" +
-                        "\n [3] Lägga till en buss" +
-                        "\n [4] Lägga till en lastbil" +
+                Console.WriteLine("Vilket typ av fordon vill du lämna in??" +
+                        "\n [1] En bil?" +
+                        "\n [2] En motorcyckel?" +
+                        "\n [3] En buss" +
+                        "\n [4] En lastbil" +
                         "\n [5] Visa alla fordon i verkstaden" +
                         "\n [6] Tillbaka till menyn");
 
@@ -92,8 +104,10 @@ namespace ArvOchAbstraktion
                         verkstad.AddVehicles(car);
                         Console.Clear();
                         car.Getinfo();
-                        Console.WriteLine("Lägger till bilen i verkstaden" +
+                        Console.WriteLine("Tack för ditt förtroende! Välkommer åter!" +
                             "\n ");
+                        BackToMenu();
+                        Console.Clear();
                         program = false;
 
                         break;
@@ -103,8 +117,10 @@ namespace ArvOchAbstraktion
                         verkstad.AddVehicles(bike);
                         Console.Clear();
                         bike.Getinfo();
-                        Console.WriteLine("Lägger till motorcyckeln i verkstaden" +
+                        Console.WriteLine("Tack för ditt förtroende! Välkommer åter!" +
                             "\n ");
+                        BackToMenu();
+                        Console.Clear();
                         program = false;
 
                         break;
@@ -114,8 +130,10 @@ namespace ArvOchAbstraktion
                         verkstad.AddVehicles(bus);
                         Console.Clear();
                         bus.Getinfo();
-                        Console.WriteLine("Lägger till bussen i verkstaden" +
+                        Console.WriteLine("Tack för ditt förtroende! Välkommer åter!" +
                             "\n ");
+                        BackToMenu();
+                        Console.Clear();
                         program = false;
 
                         break;
@@ -125,8 +143,10 @@ namespace ArvOchAbstraktion
                         verkstad.AddVehicles(truck);
                         Console.Clear();
                         truck.Getinfo();
-                        Console.WriteLine("Lägger till lastbilen i verkstaden" +
+                        Console.WriteLine("Tack för ditt förtroende! Välkommer åter!" +
                             "\n ");
+                        BackToMenu();
+                        Console.Clear();
                         program = false;
 
                         break;
@@ -153,7 +173,7 @@ namespace ArvOchAbstraktion
         /// <summary>
         /// En enkelt metod för att komma tillbaka till div menyer
         /// </summary>
-        public static void BackToMenu()
+        private static void BackToMenu()
         {
             Console.WriteLine("Tryck enter för att komma till meny");
             Console.ReadLine();
@@ -163,7 +183,7 @@ namespace ArvOchAbstraktion
         /// </summary>
         /// <param name="whatToAsk"></param>
         /// <returns>Namn</returns>
-        public static string SetName(string whatToAsk)
+        private static string SetName(string whatToAsk)
         {
             string Name;
             var check = true;
@@ -189,7 +209,7 @@ namespace ArvOchAbstraktion
         /// </summary>
         /// <param name="whatToAsk"></param>
         /// <returns>Ett nummer</returns>
-        public static int SetNumber(string whatToAsk)
+        private static int SetNumber(string whatToAsk)
 
         {
             int numb = 0;
@@ -215,7 +235,7 @@ namespace ArvOchAbstraktion
         /// Skapar en bil
         /// </summary>
         /// <returns>En bil</returns>
-        public static Car AddCar()
+        private static Car AddCar()
         {
             Car car = new Car();
 
@@ -234,7 +254,7 @@ namespace ArvOchAbstraktion
         /// Skapar en motorcykel
         /// </summary>
         /// <returns>En motorcykel</returns>
-        public static Bike AddBike()
+        private static Bike AddBike()
         {
             Bike bike = new Bike();
 
@@ -249,7 +269,7 @@ namespace ArvOchAbstraktion
         /// Skapar en bus
         /// </summary>
         /// <returns>En buss</returns>
-        public static Bus AddBus()
+        private static Bus AddBus()
         {
             Bus bus = new Bus();
 
@@ -264,7 +284,7 @@ namespace ArvOchAbstraktion
         /// Skapar en lastbil
         /// </summary>
         /// <returns>En lastbil</returns>
-        public static Truck AddTruck()
+        private static Truck AddTruck()
         {
             Truck truck = new Truck();
 
