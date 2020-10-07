@@ -13,9 +13,19 @@ namespace Klasser
 
         public override void Getinfo()
         {
-            Console.WriteLine("\t---Lastbilar---");
-            base.Getinfo();
-            Console.WriteLine($"Max lastvikt: {MaxLoad}");
+            if (MaxLoad <= 2000)
+            {
+                Console.WriteLine("\t---Lätta lastbilar---");
+                base.Getinfo();
+                Console.WriteLine($"Max hastighet: {MaxLoad}");
+            }
+            else
+            {
+                Console.WriteLine("\t---Tunga lastbilar---");
+                base.Getinfo();
+                Console.WriteLine($"Max hastighet: {MaxLoad}");
+            }
+            
         }
     }
 }

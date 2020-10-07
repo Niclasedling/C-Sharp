@@ -13,46 +13,193 @@ namespace ArvOchAbstraktion
     {
         static void Main(string[] args)
         {
-
-            IVerkstad verkstad = new Verkstad();
+            
+            IVerkstad verkstad = new VerkstadV2();
             startProgram(verkstad);
+            Console.Clear();
+
+            var program = true;
+            while (program)
+            {
+                Console.WriteLine("Vilken typ av fordon vill du lämna in??" +
+                        "\n [1] En bil?" +
+                        "\n [2] En motorcyckel?" +
+                        "\n [3] En buss?" +
+                        "\n [4] En lastbil?" +
+                        "\n [5] Visa alla fordon i verkstaden" +
+                        "\n [6] Tillbaka till menys");
+
+                int.TryParse(Console.ReadLine(), out int creatVehicles);
+
+                switch (creatVehicles)
+                {
+                    case 1:                                ///---------------------------------------///
+                        Console.Clear();                   ///------------SKAPAR EN BIL--------------///
+                        var car = CreateCar();             ///---------------------------------------///
+                        verkstad.AddVehicles(car);
+                        car.Getinfo();
+                        Console.WriteLine("Tack för ditt förtroende! Välkommer åter!" +
+                            "\n ");
+                        BackToMenu();
+                        Console.Clear();
+                        
+                        break;
+                    case 2:                               
+                        Console.Clear();                  
+                        var bike = CreateBike();          
+                        var tryToAdd = verkstad.AddVehicles(bike);
+                        bike.Getinfo();
+
+                        if (tryToAdd)                       ///---------------------------------------///
+                        {                                   ///---------SKAPAR EN MOTORCYCKEL---------///
+                            if (bike.MaxSpeed <=50)         ///---------------------------------------///
+                            {
+                                Console.WriteLine("Mopden är tillagd.");
+                                Console.WriteLine("Tack för ditt förtroende! Välkommer åter!" +
+                                "\n ");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Motorcyckeln är tillagd.");
+                                Console.WriteLine("Tack för ditt förtroende! Välkommer åter!" +
+                                "\n ");
+                            }
+                            
+                        }
+                        else
+                        {
+                            Console.WriteLine("Endast mopeder kan lämnas in i den här verkstaden");
+                        }
+                        BackToMenu();
+                        Console.Clear();
+                        
+                        break;
+                    case 3:  
+                        Console.Clear();
+                        var bus = CreateBus();
+                        tryToAdd = verkstad.AddVehicles(bus);
+                        bus.Getinfo();
+
+                        if (tryToAdd)                          ///---------------------------------------///
+                        {                                      ///------------SKAPAR EN BUSS-------------///
+                            if (bus.MaxPassengers <= 10)       ///---------------------------------------///
+                            {
+                                Console.WriteLine("Minibussen är tillagd.");
+                                Console.WriteLine("Tack för ditt förtroende! Välkommer åter!" +
+                                "\n ");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Bussen är tillagd.");
+                                Console.WriteLine("Tack för ditt förtroende! Välkommer åter!" +
+                                "\n ");
+                            }
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("Endast minibussar kan lämnas in i den här verkstaden");
+                        }
+                        BackToMenu();
+                        Console.Clear();
+                        break;
+                    case 4: // skapar en lastbil                ///---------------------------------------///
+                        Console.Clear();                        ///-----------SKAPAR EN LASTBIL-----------///          
+                        var truck = CreateTruck();              ///---------------------------------------///
+                        tryToAdd = verkstad.AddVehicles(truck);
+                        if (tryToAdd)
+                        {
+                            if (truck.MaxLoad <= 2000)
+                            {
+                                Console.WriteLine("Lätt lastbil är tillagd.");
+                                Console.WriteLine("Tack för ditt förtroende! Välkommer åter!" +
+                                "\n ");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Tung lastbil är tillagd.");
+                                Console.WriteLine("Tack för ditt förtroende! Välkommer åter!" +
+                                "\n ");
+                            }
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("Endast lätta lastbilar kan lämnas in i den här verkstaden");
+                        }
+                        BackToMenu();
+                        Console.Clear();
+                        break;
+                    case 5:  // Skriver ut info om alla fordon i listan fordon.
+                        Console.Clear();
+                        // Om fordonslistan är null / tom, kommer ett meddelande att visas
+                        if (verkstad.Fordonslista.Count == 0)
+
+                            Console.WriteLine("Just nu står det inga fordon på verkstaden" +
+                                "\n ");
+
+                        else
+                            foreach (var fordon in verkstad.Fordonslista)
+                            {
+                                fordon.Getinfo();
+                            }
+
+                        break;
+                    case 6:  // Avbryter programmet
+                        Console.Clear();
+                        startProgram(verkstad);
+                        break;
+                    
+                    default: // Om man trycker på något annat än 1-4 kommer detta att skrivas ut.
+                        Console.WriteLine("Tyvärr kan vi inte ta emot det fordonet, vänligen välj alternativ 1-4");
+                        break;
+                }
+
+            }
 
         }
+
         /// <summary>
         /// Startar main
         /// </summary>
         /// <param name="verkstad"></param>
-        private static void startProgram(IVerkstad verkstad)
+        public static void startProgram(IVerkstad verkstad)
         {
             var check = true;
             while (check)
             {
-                Console.WriteLine("----Välkommen till hasses fordonsverkstad----" +
+                Console.WriteLine("----Välkommen till Hasses fordonsverkstad----" +
                     "\n " +
                     "\t Vad vill vår kära kund göra?" +
                     "\n " +
-                    "\n [1] Lämna till ett fordon" +
+                    "\n [1] Lämna in ett fordon" +
                     "\n [2] Hämta ett fordon" +
-                    "\n [3] Avsluta vistelsen" +
-                    "\n [4] Titta på alla fordon i verkstaden");
+                    "\n [3] Titta på alla fordon i verkstaden" +
+                    "\n [4] Avsluta vistelse");
 
                 int.TryParse(Console.ReadLine(), out int addVehicles);
                 switch (addVehicles)
                 {
                     case 1:
-                        CreateVehicles(verkstad);
+                        check = false;
                         break;
 
                     case 2:
+                        if (verkstad.Fordonslista.Count == 0)
+
+                            Console.WriteLine("Just nu står det inga fordon på verkstaden" +
+                                "\n ");
+
+                        else
+                            foreach (var fordon in verkstad.Fordonslista)
+                            {
+                                fordon.Getinfo();
+                            }
                         Console.WriteLine("Skriv in regummer på det fordon du vill checka ut ifrån verkstaden");
                         verkstad.RemoveVehicles();
                         break;
 
                     case 3:
-
-                        check = false;
-                        break;
-                    case 4:
                         Console.Clear();
 
                         if (verkstad.Fordonslista.Count == 0)
@@ -68,6 +215,9 @@ namespace ArvOchAbstraktion
 
                         BackToMenu();
                         break;
+                    case 4:
+                        Environment.Exit(0);
+                        break;
 
                     default:
                         Console.WriteLine("Du måste välja alternativ 1-4");
@@ -77,103 +227,9 @@ namespace ArvOchAbstraktion
         }
 
         /// <summary>
-        /// Skapar ett fordon och lägger till i Listan Fordon
-        /// </summary>
-        /// <param name="verkstad"></param>
-        private static void CreateVehicles(IVerkstad verkstad)
-        {
-            Console.Clear();
-            var program = true;
-            while (program)
-            {
-                Console.WriteLine("Vilket typ av fordon vill du lämna in??" +
-                        "\n [1] En bil?" +
-                        "\n [2] En motorcyckel?" +
-                        "\n [3] En buss" +
-                        "\n [4] En lastbil" +
-                        "\n [5] Visa alla fordon i verkstaden" +
-                        "\n [6] Tillbaka till menyn");
-
-                int.TryParse(Console.ReadLine(), out int creatVehicles);
-
-                switch (creatVehicles)
-                {
-                    case 1: // SKapar en ny bil!
-                        Console.Clear();
-                        var car = AddCar();
-                        verkstad.AddVehicles(car);
-                        Console.Clear();
-                        car.Getinfo();
-                        Console.WriteLine("Tack för ditt förtroende! Välkommer åter!" +
-                            "\n ");
-                        BackToMenu();
-                        Console.Clear();
-                        program = false;
-
-                        break;
-                    case 2: // Skapar en ny motorcykel!
-                        Console.Clear();
-                        var bike = AddBike();
-                        verkstad.AddVehicles(bike);
-                        Console.Clear();
-                        bike.Getinfo();
-                        Console.WriteLine("Tack för ditt förtroende! Välkommer åter!" +
-                            "\n ");
-                        BackToMenu();
-                        Console.Clear();
-                        program = false;
-
-                        break;
-                    case 3:  // Skapar en ny buss!
-                        Console.Clear();
-                        var bus = AddBus();
-                        verkstad.AddVehicles(bus);
-                        Console.Clear();
-                        bus.Getinfo();
-                        Console.WriteLine("Tack för ditt förtroende! Välkommer åter!" +
-                            "\n ");
-                        BackToMenu();
-                        Console.Clear();
-                        program = false;
-
-                        break;
-                    case 4: // skapar en lastbil
-                        Console.Clear();
-                        var truck = AddTruck();
-                        verkstad.AddVehicles(truck);
-                        Console.Clear();
-                        truck.Getinfo();
-                        Console.WriteLine("Tack för ditt förtroende! Välkommer åter!" +
-                            "\n ");
-                        BackToMenu();
-                        Console.Clear();
-                        program = false;
-
-                        break;
-                    case 5:  // Skriver ut info om alla fordon i listan fordon.
-                        Console.Clear();
-                        foreach (var fordon in verkstad.Fordonslista)
-                        {
-                            fordon.Getinfo();
-                        }
-                        program = false;
-                        break;
-                    case 6:  // Avbryter programmet
-                        Console.Clear();
-                        program = false;
-                        break;
-
-                    default: // Om man trycker på något annat än 1-4 kommer detta att skrivas ut.
-                        Console.WriteLine("Du måste välja mellan altevertiv 1-4");
-                        break;
-                }
-
-            }
-        }
-        /// <summary>
         /// En enkelt metod för att komma tillbaka till div menyer
         /// </summary>
-        private static void BackToMenu()
+        public static void BackToMenu()
         {
             Console.WriteLine("Tryck enter för att komma till meny");
             Console.ReadLine();
@@ -183,7 +239,7 @@ namespace ArvOchAbstraktion
         /// </summary>
         /// <param name="whatToAsk"></param>
         /// <returns>Namn</returns>
-        private static string SetName(string whatToAsk)
+        public static string SetName(string whatToAsk)
         {
             string Name;
             var check = true;
@@ -209,7 +265,7 @@ namespace ArvOchAbstraktion
         /// </summary>
         /// <param name="whatToAsk"></param>
         /// <returns>Ett nummer</returns>
-        private static int SetNumber(string whatToAsk)
+        public static int SetNumber(string whatToAsk)
 
         {
             int numb = 0;
@@ -235,7 +291,7 @@ namespace ArvOchAbstraktion
         /// Skapar en bil
         /// </summary>
         /// <returns>En bil</returns>
-        private static Car AddCar()
+        public static Car CreateCar()
         {
             Car car = new Car();
 
@@ -254,7 +310,7 @@ namespace ArvOchAbstraktion
         /// Skapar en motorcykel
         /// </summary>
         /// <returns>En motorcykel</returns>
-        private static Bike AddBike()
+        public static Bike CreateBike()
         {
             Bike bike = new Bike();
 
@@ -269,7 +325,7 @@ namespace ArvOchAbstraktion
         /// Skapar en bus
         /// </summary>
         /// <returns>En buss</returns>
-        private static Bus AddBus()
+        public static Bus CreateBus()
         {
             Bus bus = new Bus();
 
@@ -284,7 +340,7 @@ namespace ArvOchAbstraktion
         /// Skapar en lastbil
         /// </summary>
         /// <returns>En lastbil</returns>
-        private static Truck AddTruck()
+        public static Truck CreateTruck()
         {
             Truck truck = new Truck();
 

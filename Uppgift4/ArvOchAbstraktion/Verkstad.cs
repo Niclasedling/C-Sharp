@@ -25,22 +25,25 @@ namespace ArvOchAbstraktion
         /// Lägger till ett fordon till verkstaden
         /// </summary>
         /// <param name="fordon"></param>
-        public void AddVehicles(Fordon fordon)
+        public bool AddVehicles(Fordon fordon)
         {
             Fordonslista.Add(fordon);
+            return true;
         }
-      
+      /// <summary>
+      /// Tar bort ett fordon med hjälp av att söka på ett regNr
+      /// </summary>
         public void RemoveVehicles()
         {
            
             var regnummerTomatch = Console.ReadLine().ToUpper();
             Fordon bilAttTabort = null;
 
-            foreach (var bil in Fordonslista)
+            foreach (var fordon in Fordonslista)
             {
-                if (regnummerTomatch == bil.RegistrationNumber)
+                if (regnummerTomatch == fordon.RegistrationNumber)
                 {
-                    bilAttTabort = bil;
+                    bilAttTabort = fordon;
                 }
             }
             if (bilAttTabort != null)

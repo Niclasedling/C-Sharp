@@ -12,9 +12,19 @@ namespace Klasser
         /// </summary>
         public override void Getinfo()
         {
-            Console.WriteLine("\t---Motorcycklar---");
-            base.Getinfo();
-            Console.WriteLine($"Max hastighet: {MaxSpeed}");
+            if (MaxSpeed <= 50)
+            {
+                Console.WriteLine("\t---Moped---");
+                base.Getinfo();
+                Console.WriteLine($"Max hastighet: {MaxSpeed}");
+            }
+            else
+            {
+                Console.WriteLine("\t---Motorcycklar---");
+                base.Getinfo();
+                Console.WriteLine($"Max hastighet: {MaxSpeed}");
+            }
+           
         }
     }
 }

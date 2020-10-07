@@ -12,9 +12,19 @@ namespace Klasser
         /// </summary>
         public override void Getinfo()
         {
-            Console.WriteLine("\t---Bussar---");
-            base.Getinfo();
-            Console.WriteLine($"Max antal passagerare:{MaxPassengers}");
+            if (MaxPassengers <= 10)
+            {
+                Console.WriteLine("\t---Minibuss---");
+                base.Getinfo();
+                Console.WriteLine($"Max antal passagerare: {MaxPassengers}");
+            }
+            else
+            {
+                Console.WriteLine("\t---Buss---");
+                base.Getinfo();
+                Console.WriteLine($"Max antal passagerare: {MaxPassengers}");
+            }
+            
         }
     }
 }

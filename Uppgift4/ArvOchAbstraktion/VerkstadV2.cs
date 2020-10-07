@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ArvOchAbstraktion
 {
-    class VerkstadV2 : IVerkstad
+    public class VerkstadV2 : IVerkstad
     {
         public List<Fordon> Fordonslista { get; set; }
 
@@ -17,9 +17,16 @@ namespace ArvOchAbstraktion
         /// Lägger till ett fordon till verkstaden
         /// </summary>
         /// <param name="fordon"></param>
-        public void AddVehicles(Fordon fordon)
+        public bool AddVehicles(Fordon fordon)
         {
-            Fordonslista.Add(fordon);
+            var isOktoAdd = TrytoAddVehicles(fordon);
+            if (isOktoAdd)
+            {
+                Fordonslista.Add(fordon);
+                return true;
+            }
+            else
+                return false;
         }
         /// <summary>
         /// Tar bort ett fordon från verkstaden
@@ -47,21 +54,49 @@ namespace ArvOchAbstraktion
             }
         }
 
-        //public bool TrytoAddVehicles(Bike bike)
-        //{
-        //    var moped = bike;
+        public bool TrytoAddVehicles(Fordon fordon)
+        {
+            var isOktoAdd = false;
+            if (fordon is Bike)
+            {
+               var bike = fordon as Bike;
+                if (bike.MaxSpeed <= 50)
+                {
+                    isOktoAdd = true;
 
-        //    if (bike.MaxSpeed <= 50)
-        //    {
-        //        bike = moped;
-        //    }
-        //    else
-        //    {
-        //        return bike;
-        //    }
-            
+                } 
 
-        //}
+            }
+            if (fordon is Bus)
+            {
+                var bus = fordon as Bus;
+                if (bus.MaxPassengers <= 8)
+                {
+                    isOktoAdd = true;
+
+                }
+
+            }
+            if (fordon is Truck)
+            {
+                var truck = fordon as Truck;
+                if (truck.MaxLoad <= 2500)
+                      
+                {
+                    isOktoAdd = true;
+
+                }
+
+            }
+            if (fordon is Car)
+            {
+                var car = fordon as Car;
+                isOktoAdd = true;
+            }
+
+            return isOktoAdd;
+
+        }
 
     }
 }
