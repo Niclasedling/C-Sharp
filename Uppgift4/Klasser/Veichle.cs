@@ -17,6 +17,7 @@ namespace Klasser
         {
             Console.WriteLine($"Märke: { ModelName}" +
                 $"\nReg nummer: {RegistrationNumber}" +
+                $"\nMilmätare : {OdoMeter}mil" +
                 $"\nByggdes: {DateTime.Now}");
 
         }

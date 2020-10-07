@@ -19,7 +19,7 @@ namespace ArvOchAbstraktion
         /// <param name="fordon"></param>
         public bool AddVehicles(Fordon fordon)
         {
-            var isOktoAdd = TrytoAddVehicles(fordon);
+            var isOktoAdd = InputHelper.TrytoAddVehicles(fordon);
             if (isOktoAdd)
             {
                 Fordonslista.Add(fordon);
@@ -52,50 +52,6 @@ namespace ArvOchAbstraktion
             {
                 Console.WriteLine($"En bil med registreringsnummret {regnummerTomatch} hittades inte i verkstaden.");
             }
-        }
-
-        public bool TrytoAddVehicles(Fordon fordon)
-        {
-            var isOktoAdd = false;
-            if (fordon is Bike)
-            {
-               var bike = fordon as Bike;
-                if (bike.MaxSpeed <= 50)
-                {
-                    isOktoAdd = true;
-
-                } 
-
-            }
-            if (fordon is Bus)
-            {
-                var bus = fordon as Bus;
-                if (bus.MaxPassengers <= 8)
-                {
-                    isOktoAdd = true;
-
-                }
-
-            }
-            if (fordon is Truck)
-            {
-                var truck = fordon as Truck;
-                if (truck.MaxLoad <= 2500)
-                      
-                {
-                    isOktoAdd = true;
-
-                }
-
-            }
-            if (fordon is Car)
-            {
-                var car = fordon as Car;
-                isOktoAdd = true;
-            }
-
-            return isOktoAdd;
-
         }
 
     }
