@@ -8,7 +8,6 @@ namespace ArvOchAbstraktion
     public interface IVerkstad
     {
         public bool AddVehicles(Fordon fordon);
-       
         public void RemoveVehicles();
         public List<Fordon> Fordonslista { get; set; }
     }

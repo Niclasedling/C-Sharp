@@ -60,20 +60,7 @@ namespace ArvOchAbstraktion
                 Console.ReadKey();
             }
         }
-        //public bool TrytoAddVehicles(Bike bike)
-        //{
-            
-        //    if (bike.MaxSpeed <= 50)
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-
-
-        //}
+        
     }
 }
 
