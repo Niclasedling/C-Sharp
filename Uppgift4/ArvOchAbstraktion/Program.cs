@@ -71,7 +71,7 @@ namespace ArvOchAbstraktion
                                     "\n [3] En buss?" +
                                     "\n [4] En lastbil?" +
                                     "\n [5] Visa alla fordon i verkstaden" +
-                                    "\n [6] Tillbaka till menys");
+                                    "\n [6] Tillbaka till meny");
 
                             int.TryParse(Console.ReadLine(), out int creatVehicles);
 
@@ -79,7 +79,7 @@ namespace ArvOchAbstraktion
                             {
                                 case 1:                                ///---------------------------------------///
                                     Console.Clear();                   ///------------SKAPAR EN BIL--------------///
-                                    var car = InputHelper.CreateCar(); ///---------------------------------------///
+                                    var car = InputHelper.UserCar(); ///---------------------------------------///
                                     verkstad.AddVehicles(car);
                                     car.Getinfo();
                                     Console.WriteLine("Tack för ditt förtroende! Välkommer åter!" +
@@ -90,7 +90,7 @@ namespace ArvOchAbstraktion
                                     break;
                                 case 2:
                                     Console.Clear();
-                                    var bike = InputHelper.CreateBike();
+                                    var bike = InputHelper.UserBike();
                                     var tryToAdd = verkstad.AddVehicles(bike);
                                     bike.Getinfo();
 
@@ -120,7 +120,7 @@ namespace ArvOchAbstraktion
                                     break;
                                 case 3:
                                     Console.Clear();
-                                    var bus = InputHelper.CreateBus();
+                                    var bus = InputHelper.UserBus();
                                     tryToAdd = verkstad.AddVehicles(bus);
                                     bus.Getinfo();
 
@@ -149,7 +149,7 @@ namespace ArvOchAbstraktion
                                     break;
                                 case 4: // skapar en lastbil                ///---------------------------------------///
                                     Console.Clear();                        ///-----------SKAPAR EN LASTBIL-----------///          
-                                    var truck = InputHelper.CreateTruck();  ///---------------------------------------///
+                                    var truck = InputHelper.UserTruck();  ///---------------------------------------///
                                     tryToAdd = verkstad.AddVehicles(truck);
                                     if (tryToAdd)
                                     {
