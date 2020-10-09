@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ArvOchAbstraktion
 {
-    interface IVerkstad
+    public interface IVerkstad
     {
         public bool AddVehicles(Fordon fordon);
        

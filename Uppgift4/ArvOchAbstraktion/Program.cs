@@ -13,9 +13,38 @@ namespace ArvOchAbstraktion
     {
         static void Main(string[] args)
         {
-            
-            IVerkstad verkstad = new Verkstad();
+            var mainProgram = true;
+            while (mainProgram)
+            {
+                Console.WriteLine("Vilken verkstad vill du välja?" +
+                "\n[1] Hasses stora verkstad" +
+                "\n[2] Hasses lilla verkstad" +
+                "\n[3] Avsluta");
 
+                int.TryParse(Console.ReadLine(), out int Main);
+                switch (Main)
+                {
+                    case 1:
+                        IVerkstad verkstad = new Verkstad();
+                        MainProgram(verkstad);
+                        Console.Clear();
+                        break;
+                    case 2:
+                        Console.Clear();
+                        IVerkstad verkstadv2 = new VerkstadV2();
+                        MainProgram(verkstadv2);
+                        break;
+                    case 3:
+                        break;
+                    default:
+                        Console.WriteLine("Du måste välja alternativ 1-3");
+                        break;
+                }
+            }
+        }
+
+        public static void MainProgram(IVerkstad verkstad)
+        {
             var check = true;
             while (check)
             {
@@ -171,7 +200,7 @@ namespace ArvOchAbstraktion
                             }
                         }
                         break;
-                            
+
 
                     case 2:
                         if (verkstad.Fordonslista.Count == 0)
@@ -181,7 +210,7 @@ namespace ArvOchAbstraktion
                             InputHelper.BackToMenu();
                             Console.Clear();
                             break;
-                            
+
 
                         }
                         else
@@ -203,7 +232,8 @@ namespace ArvOchAbstraktion
                                 "\n ");
                         }
                         else
-                        {   foreach (var fordon in verkstad.Fordonslista)
+                        {
+                            foreach (var fordon in verkstad.Fordonslista)
                             {
                                 fordon.Getinfo();
                             }
@@ -211,7 +241,7 @@ namespace ArvOchAbstraktion
                         InputHelper.BackToMenu();
                         break;
                     case 4:
-                        Environment.Exit(0);
+                        check = false;
                         break;
 
                     default:
@@ -219,9 +249,7 @@ namespace ArvOchAbstraktion
                         break;
                 }
             }
-           
         }
-
     }
 }
 

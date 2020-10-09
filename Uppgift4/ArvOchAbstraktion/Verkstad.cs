@@ -49,27 +49,31 @@ namespace ArvOchAbstraktion
             if (bilAttTabort != null)
             {
                 Fordonslista.Remove(bilAttTabort);
+                Console.Clear();
                 Console.WriteLine($"Fordon med regNr {regnummerTomatch} har checkat ur verkstaden");
+                Console.ReadKey();
             }
             else
             {
-                Console.WriteLine($"En bil med regNr {regnummerTomatch} hittades inte i verkstaden.");
+                Console.Clear();
+                Console.WriteLine($"Ett fordon med regNr {regnummerTomatch} hittades inte i verkstaden.");
+                Console.ReadKey();
             }
         }
-        public bool TrytoAddVehicles(Bike bike)
-        {
+        //public bool TrytoAddVehicles(Bike bike)
+        //{
             
-            if (bike.MaxSpeed <= 50)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+        //    if (bike.MaxSpeed <= 50)
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
 
 
-        }
+        //}
     }
 }
 

@@ -47,10 +47,15 @@ namespace ArvOchAbstraktion
             if (bilAttTabort != null)
             {
                 Fordonslista.Remove(bilAttTabort);
+                Console.Clear();
+                Console.WriteLine($"Fordon med regNr {regnummerTomatch} har checkat ur verkstaden");
+                Console.ReadKey();
             }
             else
             {
+                Console.Clear();
                 Console.WriteLine($"En bil med registreringsnummret {regnummerTomatch} hittades inte i verkstaden.");
+                Console.ReadKey();
             }
         }
 

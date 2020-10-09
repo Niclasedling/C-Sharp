@@ -39,7 +39,6 @@ namespace Klasser
                 {
                     Console.WriteLine("Du måste mata in något.");
                 }
-
                 else
                 {
                     check = false;
@@ -57,7 +56,7 @@ namespace Klasser
 
         {
             int numb = 0;
-            var isInputting = true;
+            var check = true;
             do
             {
                 Console.Write(whatToAsk);
@@ -69,9 +68,9 @@ namespace Klasser
 
                 else
                 {
-                    isInputting = false;
+                    check = false;
                 }
-            } while (isInputting);
+            } while (check);
 
             return numb;
         }
@@ -153,7 +152,6 @@ namespace Klasser
                 if (bike.MaxSpeed <= 50)
                 {
                     isOktoAdd = true;
-
                 }
 
             }
@@ -163,7 +161,6 @@ namespace Klasser
                 if (bus.MaxPassengers <= 8)
                 {
                     isOktoAdd = true;
-
                 }
 
             }
@@ -171,10 +168,8 @@ namespace Klasser
             {
                 var truck = fordon as Truck;
                 if (truck.MaxLoad <= 2500)
-
                 {
                     isOktoAdd = true;
-
                 }
 
             }
@@ -217,11 +212,15 @@ namespace Klasser
             if (bilAttTabort != null)
             {
                 Fordonslista.Remove(bilAttTabort);
+                Console.Clear();
                 Console.WriteLine($"Fordon med regNr {regnummerTomatch} har checkat ur verkstaden");
+                Console.ReadKey();
             }
             else
             {
-                Console.WriteLine($"En bil med regNr {regnummerTomatch} hittades inte i verkstaden.");
+                Console.Clear();
+                Console.WriteLine($"Ett fordon med regNr {regnummerTomatch} hittades inte i verkstaden.");
+                Console.ReadKey();
             }
         }
     }
