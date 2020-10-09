@@ -53,7 +53,6 @@ namespace Klasser
         /// <param name="whatToAsk"></param>
         /// <returns>Ett nummer</returns>
         public static int SetNumber(string whatToAsk)
-
         {
             int numb = 0;
             var check = true;
@@ -78,7 +77,7 @@ namespace Klasser
         /// Skapar en bil
         /// </summary>
         /// <returns>En bil</returns>
-        public static Car CreateCar()
+        public static Car UserCar()
         {
             Car car = new Car();
 
@@ -90,14 +89,15 @@ namespace Klasser
             if (answer == "j")
 
                 car.HasTowbar = true;
-
+            
             return car;
+            
         }
         /// <summary>
         /// Skapar en motorcykel
         /// </summary>
         /// <returns>En motorcykel</returns>
-        public static Bike CreateBike()
+        public static Bike UserBike()
         {
             Bike bike = new Bike();
 
@@ -112,7 +112,7 @@ namespace Klasser
         /// Skapar en bus
         /// </summary>
         /// <returns>En buss</returns>
-        public static Bus CreateBus()
+        public static Bus UserBus()
         {
             Bus bus = new Bus();
 
@@ -127,7 +127,7 @@ namespace Klasser
         /// Skapar en lastbil
         /// </summary>
         /// <returns>En lastbil</returns>
-        public static Truck CreateTruck()
+        public static Truck UserTruck()
         {
             Truck truck = new Truck();
 
@@ -182,8 +182,6 @@ namespace Klasser
             return isOktoAdd;
 
         }
-        
-
         /// <summary>
         /// Lägger till ett fordon till verkstaden
         /// </summary>
@@ -223,5 +221,6 @@ namespace Klasser
                 Console.ReadKey();
             }
         }
+
     }
 }
