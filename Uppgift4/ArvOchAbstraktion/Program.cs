@@ -55,7 +55,7 @@ namespace ArvOchAbstraktion
                     "\n [1] Lämna in ett fordon" +
                     "\n [2] Hämta ett fordon" +
                     "\n [3] Titta på alla fordon i verkstaden" +
-                    "\n [4] Avsluta vistelse");
+                    "\n [4] Byt verkstad");
 
                 int.TryParse(Console.ReadLine(), out int addVehicles);
                 switch (addVehicles)
@@ -79,7 +79,7 @@ namespace ArvOchAbstraktion
                             {
                                 case 1:                                ///---------------------------------------///
                                     Console.Clear();                   ///------------SKAPAR EN BIL--------------///
-                                    var car = InputHelper.UserCar(); ///---------------------------------------///
+                                    var car = InputHelper.UserCar();   ///---------------------------------------///
                                     verkstad.AddVehicles(car);
                                     car.Getinfo();
                                     Console.WriteLine("Tack för ditt förtroende! Välkommer åter!" +
@@ -149,7 +149,7 @@ namespace ArvOchAbstraktion
                                     break;
                                 case 4: // skapar en lastbil                ///---------------------------------------///
                                     Console.Clear();                        ///-----------SKAPAR EN LASTBIL-----------///          
-                                    var truck = InputHelper.UserTruck();  ///---------------------------------------///
+                                    var truck = InputHelper.UserTruck();    ///---------------------------------------///
                                     tryToAdd = verkstad.AddVehicles(truck);
                                     if (tryToAdd)
                                     {
@@ -210,7 +210,6 @@ namespace ArvOchAbstraktion
                             InputHelper.BackToMenu();
                             Console.Clear();
                             break;
-
 
                         }
                         else

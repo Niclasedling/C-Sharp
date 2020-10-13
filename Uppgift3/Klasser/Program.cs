@@ -103,14 +103,13 @@ namespace Uppgift_3
                         UserCar._model = SetName("Vilket märke är din bil?");
 
                         // Frågar efter Regnummer på bilen
-                        UserCar.RegistrationNumber = SetName($"Skriv in din {UserCar._model}s registreringsnummer");
+                        UserCar.RegistrationNumber = SetName($"Skriv in din {UserCar._model}s registreringsnummer").ToUpper();
 
                         //Frågar hur mycket bilen väger
                         UserCar.WeightinKilograms = SetNumber($"Hur mycket väger din {UserCar._model} i kilo?");
 
-                        // Frågar när bilen skapade
-                        Console.WriteLine($"När byggdes din {UserCar._model}? yyyy-mm-dd");
-                        UserCar.Registred = DateTime.Parse(Console.ReadLine());
+
+                        UserCar.Registred = DateTime.Now;
 
                         // Frågar hur långt bilet gått i mil
                         Console.WriteLine($"Hur många mil har {UserCar._model} kört?");
