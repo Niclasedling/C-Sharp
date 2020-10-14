@@ -221,6 +221,74 @@ namespace Klasser
                 Console.ReadKey();
             }
         }
+        /// <summary>
+        /// Skriver ut infromation om respektive fordon, berode på vad som är krav
+        /// </summary>
+        /// <param name="Fordon"></param>
+        public static void Getinfo(Fordon Fordon)
+        {
 
+            Console.WriteLine($"Märke: {Fordon.ModelName}" +
+                $"\nReg nummer: {Fordon.RegistrationNumber}" +
+               $"\nMilmätare : {Fordon.OdoMeter}mil" +
+               $"\nByggdes: {DateTime.Now}");
+            if (Fordon is Car)
+            {
+                var car = Fordon as Car;
+                Console.WriteLine("---BILAR---");
+                if (car.HasTowbar)
+                {
+                    Console.WriteLine("Har dragkrok");
+                }
+                else
+                {
+                    Console.WriteLine("Har inte dragkrok");
+                }
+            }
+            if (Fordon is Bike)
+            {
+                var bike = Fordon as Bike;
+                if (bike.MaxSpeed <= 50)
+                {
+                    Console.WriteLine("\t---Moped---");
+                    Console.WriteLine($"Max hastighet: {bike.MaxSpeed}");
+                }
+                else
+                {
+                    Console.WriteLine("\t---Motorcycklar---");
+                    Console.WriteLine($"Max hastighet: {bike.MaxSpeed}");
+                }
+
+            }
+            if (Fordon is Truck)
+            {
+                var truck = Fordon as Truck;
+                if (truck.MaxLoad <= 2000)
+                {
+                    Console.WriteLine("\t---Lätta lastbilar---");
+                    Console.WriteLine($"Max hastighet: {truck.MaxLoad}");
+                }
+                else
+                {
+                    Console.WriteLine("\t---Tunga lastbilar---");
+                    Console.WriteLine($"Max hastighet: {truck.MaxLoad}");
+                }
+            }
+            if (Fordon is Bus)
+            {
+                var bus = Fordon as Bus;
+                if (bus.MaxPassengers <= 10)
+                {
+                    Console.WriteLine("\t---Minibuss---");
+                    Console.WriteLine($"Max antal passagerare: {bus.MaxPassengers}");
+                }
+                else
+                {
+                    Console.WriteLine("\t---Buss---");
+                    Console.WriteLine($"Max antal passagerare: {bus.MaxPassengers}");
+                }
+            }
+
+        }
     }
 }
