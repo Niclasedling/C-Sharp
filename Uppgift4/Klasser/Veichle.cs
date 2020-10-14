@@ -9,8 +9,6 @@ namespace Klasser
         public string ModelName { get; set; }
         public string RegistrationNumber { get; set; }
         public decimal OdoMeter { get; set; }
-        public DateTime Registrated { get; set; }
-        
+        public DateTime Registrated { get; set; } 
     }
-
 }

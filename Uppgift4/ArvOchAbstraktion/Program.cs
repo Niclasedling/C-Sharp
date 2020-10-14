@@ -79,7 +79,7 @@ namespace ArvOchAbstraktion
                             {
                                 case 1:                                ///---------------------------------------///
                                     Console.Clear();                   ///------------SKAPAR EN BIL--------------///
-                                    var car = InputHelper.UserCar(); ///---------------------------------------///
+                                    var car = InputHelper.UserCar();   ///---------------------------------------///
                                     verkstad.AddVehicles(car);
                                     InputHelper.Getinfo(car);
                                     Console.WriteLine("Tack för ditt förtroende! Välkommer åter!" +
@@ -149,7 +149,7 @@ namespace ArvOchAbstraktion
                                     break;
                                 case 4: // skapar en lastbil                ///---------------------------------------///
                                     Console.Clear();                        ///-----------SKAPAR EN LASTBIL-----------///          
-                                    var truck = InputHelper.UserTruck();  ///---------------------------------------///
+                                    var truck = InputHelper.UserTruck();    ///---------------------------------------///
                                     tryToAdd = verkstad.AddVehicles(truck);
                                     if (tryToAdd)
                                     {
@@ -210,8 +210,6 @@ namespace ArvOchAbstraktion
                             InputHelper.BackToMenu();
                             Console.Clear();
                             break;
-
-
                         }
                         else
                         {
@@ -249,6 +247,7 @@ namespace ArvOchAbstraktion
                         break;
                 }
             }
+
         }
     }
 }
