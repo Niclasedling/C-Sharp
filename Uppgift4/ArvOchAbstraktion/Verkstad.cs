@@ -12,11 +12,7 @@ namespace ArvOchAbstraktion
 
     public class Verkstad : IVerkstad
     {
-       
-        
-
         public List<Fordon> Fordonslista { get; set; }
-
         public Verkstad()
         {
             Fordonslista = new List<Fordon>();
@@ -30,9 +26,9 @@ namespace ArvOchAbstraktion
             Fordonslista.Add(fordon);
             return true;
         }
-      /// <summary>
-      /// Tar bort ett fordon med hjälp av att söka på ett regNr
-      /// </summary>
+        /// <summary>
+        /// Tar bort ett fordon med hjälp av att söka på ett regNr
+        /// </summary>
         public void RemoveVehicles()
         {
            
@@ -60,7 +56,6 @@ namespace ArvOchAbstraktion
                 Console.ReadKey();
             }
         }
-        
     }
 }
 

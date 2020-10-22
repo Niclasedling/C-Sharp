@@ -81,7 +81,7 @@ namespace ArvOchAbstraktion
                                     Console.Clear();                   ///------------SKAPAR EN BIL--------------///
                                     var car = InputHelper.UserCar();   ///---------------------------------------///
                                     verkstad.AddVehicles(car);
-                                    car.Getinfo();
+                                    InputHelper.Getinfo(car);
                                     Console.WriteLine("Tack för ditt förtroende! Välkommer åter!" +
                                         "\n ");
                                     InputHelper.BackToMenu();
@@ -92,7 +92,7 @@ namespace ArvOchAbstraktion
                                     Console.Clear();
                                     var bike = InputHelper.UserBike();
                                     var tryToAdd = verkstad.AddVehicles(bike);
-                                    bike.Getinfo();
+                                    InputHelper.Getinfo(bike);
 
                                     if (tryToAdd)                       ///---------------------------------------///
                                     {                                   ///---------SKAPAR EN MOTORCYCKEL---------///
@@ -122,7 +122,7 @@ namespace ArvOchAbstraktion
                                     Console.Clear();
                                     var bus = InputHelper.UserBus();
                                     tryToAdd = verkstad.AddVehicles(bus);
-                                    bus.Getinfo();
+                                    InputHelper.Getinfo(bus);
 
                                     if (tryToAdd)                          ///---------------------------------------///
                                     {                                      ///------------SKAPAR EN BUSS-------------///
@@ -185,7 +185,7 @@ namespace ArvOchAbstraktion
                                     else
                                         foreach (var fordon in verkstad.Fordonslista)
                                         {
-                                            fordon.Getinfo();
+                                            InputHelper.Getinfo(fordon);
                                         }
 
                                     break;
@@ -210,13 +210,16 @@ namespace ArvOchAbstraktion
                             InputHelper.BackToMenu();
                             Console.Clear();
                             break;
+<<<<<<< HEAD
 
+=======
+>>>>>>> ed2a83c52118aeed0f0f8fc92b1c8376e109b578
                         }
                         else
                         {
                             foreach (var fordon in verkstad.Fordonslista)
                             {
-                                fordon.Getinfo();
+                                InputHelper.Getinfo(fordon);
                             }
                         }
                         Console.WriteLine("Skriv in regummer på det fordon du vill checka ut ifrån verkstaden");
@@ -234,7 +237,7 @@ namespace ArvOchAbstraktion
                         {
                             foreach (var fordon in verkstad.Fordonslista)
                             {
-                                fordon.Getinfo();
+                                InputHelper.Getinfo(fordon);
                             }
                         }
                         InputHelper.BackToMenu();
@@ -248,6 +251,7 @@ namespace ArvOchAbstraktion
                         break;
                 }
             }
+
         }
     }
 }

@@ -8,9 +8,10 @@ using System.Security.Cryptography.X509Certificates;
 
 
 
+
 namespace Klasser
 {
-    public class InputHelper
+    public class InputHelper 
     {
         public List<Fordon> Fordonslista { get; set; }
 
@@ -72,71 +73,6 @@ namespace Klasser
             } while (check);
 
             return numb;
-        }
-        /// <summary>
-        /// Skapar en bil
-        /// </summary>
-        /// <returns>En bil</returns>
-        public static Car UserCar()
-        {
-            Car car = new Car();
-
-            car.ModelName = SetName("Vilket märke har din bil? ");
-            car.RegistrationNumber = SetName("Skriv in bilens Registreringsnummer: ").ToUpper();
-            car.OdoMeter = SetNumber($"Hur långt har {car.ModelName} gått i mil? ");
-            Console.Write($"Har din {car.ModelName} en dragkrog? j/n: ");
-            var answer = Console.ReadLine().ToLower();
-            if (answer == "j")
-
-                car.HasTowbar = true;
-            
-            return car;
-            
-        }
-        /// <summary>
-        /// Skapar en motorcykel
-        /// </summary>
-        /// <returns>En motorcykel</returns>
-        public static Bike UserBike()
-        {
-            Bike bike = new Bike();
-
-            bike.ModelName = SetName("Vilket märke har din motorcykel? ");
-            bike.RegistrationNumber = SetName("Skriv in motorcycklens registretingsnummer: ").ToUpper();
-            bike.OdoMeter = SetNumber($"Hur långt har {bike.ModelName} gått i mil? ");
-            bike.MaxSpeed = SetNumber($"Vad är {bike.ModelName} maxhastiget km/h? ");
-
-            return bike;
-        }
-        /// <summary>
-        /// Skapar en bus
-        /// </summary>
-        /// <returns>En buss</returns>
-        public static Bus UserBus()
-        {
-            Bus bus = new Bus();
-
-            bus.ModelName = SetName("Vilket märke har din buss? ");
-            bus.RegistrationNumber = SetName("Skriv in bussens registretingsnummer: ").ToUpper();
-            bus.OdoMeter = SetNumber($"Hur långt har {bus.ModelName} gått i mil? ");
-            bus.MaxPassengers = SetNumber("Totalt antal passagerare som får vara på bussen? ");
-
-            return bus;
-        }
-        /// <summary>
-        /// Skapar en lastbil
-        /// </summary>
-        /// <returns>En lastbil</returns>
-        public static Truck UserTruck()
-        {
-            Truck truck = new Truck();
-
-            truck.ModelName = SetName("Vilket märke har Lastbilen ");
-            truck.RegistrationNumber = SetName("Skriv in lastbilens registretingsnummer: ").ToUpper();
-            truck.OdoMeter = SetNumber($"Hur långt har {truck.ModelName} gått i mil? ");
-            truck.MaxLoad = SetNumber($"Vad är {truck.ModelName} max lastkapacitet i kilo? ");
-
-            return truck;
         }
         /// <summary>
         /// En metod som ställer vissa krav för att fordon ska läggas till i listan, gäller VerkstadV2
@@ -220,6 +156,140 @@ namespace Klasser
                 Console.WriteLine($"Ett fordon med regNr {regnummerTomatch} hittades inte i verkstaden.");
                 Console.ReadKey();
             }
+        }
+        /// <summary>
+        /// Skriver ut infromation om respektive fordon, berode på vad som är krav
+        /// </summary>
+        /// <param name="Fordon"></param>
+        public static void Getinfo(Fordon Fordon)
+        {
+
+            Console.WriteLine($"Märke: {Fordon.ModelName}" +
+                $"\nReg nummer: {Fordon.RegistrationNumber}" +
+               $"\nMilmätare : {Fordon.OdoMeter}mil" +
+               $"\nByggdes: {DateTime.Now}");
+            if (Fordon is Car)
+            {
+                var car = Fordon as Car;
+                Console.WriteLine("---BILAR---");
+                if (car.HasTowbar)
+                {
+                    Console.WriteLine("Har dragkrok");
+                }
+                else
+                {
+                    Console.WriteLine("Har inte dragkrok");
+                }
+            }
+            else if (Fordon is Bike)
+            {
+                var bike = Fordon as Bike;
+                if (bike.MaxSpeed <= 50)
+                {
+                    Console.WriteLine("\t---Moped---");
+                    Console.WriteLine($"Max hastighet: {bike.MaxSpeed}");
+                }
+                else
+                {
+                    Console.WriteLine("\t---Motorcycklar---");
+                    Console.WriteLine($"Max hastighet: {bike.MaxSpeed}");
+                }
+
+            }
+            else if (Fordon is Truck)
+            {
+                var truck = Fordon as Truck;
+                if (truck.MaxLoad <= 2000)
+                {
+                    Console.WriteLine("\t---Lätta lastbilar---");
+                    Console.WriteLine($"Max hastighet: {truck.MaxLoad}");
+                }
+                else
+                {
+                    Console.WriteLine("\t---Tunga lastbilar---");
+                    Console.WriteLine($"Max hastighet: {truck.MaxLoad}");
+                }
+            }
+            else if (Fordon is Bus)
+            {
+                var bus = Fordon as Bus;
+                if (bus.MaxPassengers <= 10)
+                {
+                    Console.WriteLine("\t---Minibuss---");
+                    Console.WriteLine($"Max antal passagerare: {bus.MaxPassengers}");
+                }
+                else
+                {
+                    Console.WriteLine("\t---Buss---");
+                    Console.WriteLine($"Max antal passagerare: {bus.MaxPassengers}");
+                }
+            }
+
+        }
+        /// <summary>
+        /// Skapar en bil
+        /// </summary>
+        /// <returns>En bil</returns>
+        public static Car UserCar()
+        {
+            Car car = new Car();
+
+            car.ModelName = SetName("Vilket märke har din bil? ");
+            car.RegistrationNumber = SetName("Skriv in bilens Registreringsnummer: ").ToUpper();
+            car.OdoMeter = SetNumber($"Hur långt har {car.ModelName} gått i mil? ");
+            Console.Write($"Har din {car.ModelName} en dragkrog? j/n: ");
+            var answer = Console.ReadLine().ToLower();
+            if (answer == "j")
+
+                car.HasTowbar = true;
+
+            return car;
+
+        }
+        /// <summary>
+        /// Skapar en motorcykel
+        /// </summary>
+        /// <returns>En motorcykel</returns>
+        public static Bike UserBike()
+        {
+            Bike bike = new Bike();
+
+            bike.ModelName = SetName("Vilket märke har din motorcykel? ");
+            bike.RegistrationNumber = SetName("Skriv in motorcycklens registretingsnummer: ").ToUpper();
+            bike.OdoMeter = SetNumber($"Hur långt har {bike.ModelName} gått i mil? ");
+            bike.MaxSpeed = SetNumber($"Vad är {bike.ModelName} maxhastiget km/h? ");
+
+            return bike;
+        }
+        /// <summary>
+        /// Skapar en bus
+        /// </summary>
+        /// <returns>En buss</returns>
+        public static Bus UserBus()
+        {
+            Bus bus = new Bus();
+
+            bus.ModelName = SetName("Vilket märke har din buss? ");
+            bus.RegistrationNumber = SetName("Skriv in bussens registretingsnummer: ").ToUpper();
+            bus.OdoMeter = SetNumber($"Hur långt har {bus.ModelName} gått i mil? ");
+            bus.MaxPassengers = SetNumber("Totalt antal passagerare som får vara på bussen? ");
+
+            return bus;
+        }
+        /// <summary>
+        /// Skapar en lastbil
+        /// </summary>
+        /// <returns>En lastbil</returns>
+        public static Truck UserTruck()
+        {
+            Truck truck = new Truck();
+
+            truck.ModelName = SetName("Vilket märke har Lastbilen ");
+            truck.RegistrationNumber = SetName("Skriv in lastbilens registretingsnummer: ").ToUpper();
+            truck.OdoMeter = SetNumber($"Hur långt har {truck.ModelName} gått i mil? ");
+            truck.MaxLoad = SetNumber($"Vad är {truck.ModelName} max lastkapacitet i kilo? ");
+
+            return truck;
         }
 
     }
